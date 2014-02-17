@@ -6,12 +6,12 @@
 /*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/17 18:34:26 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/17 19:47:53 by sbethoua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINISHELL2_H
-# define FT_MINISHELL2_H
+#ifndef 42SH_H
+# define 42SH_H
 
 # include <unistd.h>
 # include <stdint.h>
@@ -318,6 +318,5 @@ int			ms_key_is_ctrl_v(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_ctrl_d(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_backspace(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_return(t_context *ctx, char **cmd, t_cmd_char **cmd_char);
-/**/
 
-#endif /* !FT_MINISHELL2_H */
+#endif /* !42SH_H */
