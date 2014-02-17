@@ -6,7 +6,7 @@
 /*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/08 15:23:31 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/17 18:34:26 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ typedef struct	s_env
 	struct s_env	*prev;
 	struct s_env	*next;
 }				t_env;
+
+typedef struct	s_str
+{
+	char			*str;
+	struct s_str	*next;
+}				t_str;
 
 typedef struct	s_process
 {
@@ -200,6 +206,9 @@ t_env		*ms_env_lstadd(t_context *context, char *var);
 void		ms_env_lstdelone(t_env **current);
 void		ms_env_lstdel(t_context *context);
 t_env		*ms_env_get(t_context *context);
+
+t_str		*ms_str_lstadd(char *var, t_str **l_str);
+void		ms_str_lstdel(t_str **l_str, int fd);
 
 char		*ms_var_name_get(char *var);
 char		*ms_var_value_get(char *var);

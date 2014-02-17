@@ -6,7 +6,7 @@
 #    By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/08 16:24:48 by sbethoua         ###   ########.fr        #
+#    Updated: 2014/02/17 18:08:29 by dcouly           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS = $(addprefix $(SRCSDIR), $(SRCSFILES))
 SRCSFILES = 42sh.c \
 			context.c \
 			env_list.c \
+			str_list.c \
 			var_name_value_get.c \
 			prompt.c \
 			term_mode.c \

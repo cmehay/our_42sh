@@ -6,7 +6,7 @@
 /*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/03 17:37:50 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/17 18:34:08 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,21 @@ static void	ms_exec_reader_child(t_command *cmd)
 {
 	char	*line;
 	int		fd;
+	t_str	*l_str;
 
+	l_str = NULL;
 	close(cmd->fdin.pipe[PIPE_READ]);
 	fd = cmd->fdin.pipe[PIPE_WRITE];
 	while (ft_gnl(STDIN_FILENO, &line) > 0)
 	{
 		if (ft_strcmp(line, cmd->fdin.filename) == 0)
 		{
+			ms_str_lstdel(&l_str, fd);
 			free(line);
 			break ;
 		}
-		ft_putendl_fd(line, fd);
+		l_str = ms_str_lstadd(line, &l_str);
+		//ft_putendl_fd(line, fd);
 		free(line);
 	}
 	exit(EXIT_SUCCESS);
