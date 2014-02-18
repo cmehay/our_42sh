@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
 
 int	ms_builtin_unsetenv(t_context *context, char **argv,
 		int __UNUSED__ outfd)

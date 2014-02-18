@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
 
 size_t	ms_ast_lexer_count(t_lex *lexer)
 {
@@ -75,7 +73,7 @@ t_lex	*ms_ast_lexer_split(t_lex *item)
 	right_lexer = item->next;
 	item->prev->next = NULL;
 	item->next->prev = NULL;
-	free(item->token);
-	free(item);
+	cool_free(item->token);
+	cool_free(item);
 	return (right_lexer);
 }

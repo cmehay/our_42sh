@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include <stdlib.h>
 
 void	ms_ast_command_clean(void *data)
 {
@@ -20,19 +19,19 @@ void	ms_ast_command_clean(void *data)
 
 	command = (t_command *) data;
 	if (command->name)
-		free(command->name);
+		cool_free(command->name);
 	if (command->argv)
 	{
 		i = 0;
 		while (command->argv[i])
-			free(command->argv[i++]);
-		free(command->argv);
+			cool_free(command->argv[i++]);
+		cool_free(command->argv);
 	}
 	if (command->fdin.filename)
-		free(command->fdin.filename);
+		cool_free(command->fdin.filename);
 	if (command->fdout.filename)
-		free(command->fdout.filename);
-	free(command);
+		cool_free(command->fdout.filename);
+	cool_free(command);
 }
 
 void	ms_ast_command_io_init(t_cmdio *cmdio)
@@ -49,7 +48,7 @@ t_node	*ms_ast_command_alloc(t_node *parent, t_direction dir)
 
 	node = ms_ast_node_alloc(parent, dir, NODE_COMMAND);
 	{
-		cmd = (t_command *) malloc(sizeof(t_command));
+		cmd = (t_command *) cool_malloc(sizeof(t_command));
 		if (!cmd)
 			ms_ast_node_clean(&node);
 		else

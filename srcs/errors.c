@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
 
 void	*ms_function_failed(char *msg, void *ret)
 {

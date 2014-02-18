@@ -11,16 +11,15 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include <stdlib.h>
 
 t_cmd_char	*ms_cmd_char_alloc(char character)
 {
 	t_cmd_char	*elem;
 
-	if ((elem = (t_cmd_char *) malloc(sizeof(t_cmd_char))) == NULL)
-		return ((t_cmd_char *) ms_function_failed("malloc failed", NULL));
+	if ((elem = (t_cmd_char *) cool_malloc(sizeof(t_cmd_char))) == NULL)
+		return ((t_cmd_char *) ms_function_failed("cool_malloc failed", NULL));
 	elem->character = character;
-	elem->cursor = FALSE;
+	elem->cursor = _FALSE;
 	elem->prev = NULL;
 	elem->next = NULL;
 	return (elem);
@@ -35,12 +34,12 @@ t_cmd_char	*ms_cmd_char_lstadd(t_cmd_char *cmd_char, char character)
 		return (NULL);
 	if (cmd_char == NULL)
 	{
-		elem->cursor = TRUE;
+		elem->cursor = _TRUE;
 		cmd_char = elem;
 		return (elem);
 	}
 	current = cmd_char;
-	while (current->cursor == FALSE)
+	while (current->cursor == _FALSE)
 		current = current->next;
 	elem->prev = current->prev;
 	current->prev = elem;
@@ -60,7 +59,7 @@ void		ms_cmd_char_lstdelone(t_cmd_char *current)
 			current->prev->next = current->next;
 		if (current->next)
 			current->next->prev = current->prev;
-		free(current);
+		cool_free(current);
 	}
 }
 
@@ -73,7 +72,7 @@ void		ms_cmd_char_lstdel(t_cmd_char *cmd_char)
 	while (current)
 	{
 		next = current->next;
-		free(current);
+		cool_free(current);
 		current = next;
 	}
 }

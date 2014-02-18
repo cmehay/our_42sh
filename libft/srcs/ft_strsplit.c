@@ -3,78 +3,120 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 18:16:56 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/17 15:54:10 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/22 15:28:25 by cmehay            #+#    #+#             */
+/*   Updated: 2014/02/11 12:05:17 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-size_t	ft_strwc(const char *s, char c)
+static size_t	word_counter(char const *s, char c)
 {
-	size_t	counter;
+	char	*tmp;
+	size_t	cnt;
+	size_t	i;
 
-	counter = 0;
-	while (*s != '\0')
+	i = 1;
+	tmp = (char*)s;
+	cnt = (*tmp != c) ? 1 : 0;
+	while (tmp[i] != 0)
 	{
-		while (*s == c && *s != '\0')
-			s++;
-		if (*s != '\0')
-			counter++;
-		while (*s != c && *s != '\0')
-			s++;
+		if ((tmp[i] != c && tmp[i - 1] == c))
+			cnt++;
+		i++;
 	}
-	return (counter);
+	return (cnt);
 }
 
-int		ft_strsubsplit(char **tab, const char *s, char c)
+static int		add_str(char **to, char const *from, char c, int index)
 {
-	const char	*last_start;
-	size_t		item;
+	size_t	i;
+	size_t	rtn;
 
-	item = 0;
-	while (*s != '\0')
+	i = 0;
+	while (from[i] != c && from[i] != 0)
+		i++;
+	if ((to[index] = ft_strnew(i)) == NULL)
+		return (0);
+	rtn = i;
+	while (i-- > 0)
+		to[index][i] = from[i];
+	return (rtn);
+}
+
+static int		cool_add_str(char **to, char const *from, char c, int index)
+{
+	size_t	i;
+	size_t	rtn;
+
+	i = 0;
+	while (from[i] != c && from[i] != 0)
+		i++;
+	if ((to[index] = cool_strnew(i)) == NULL)
+		return (0);
+	rtn = i;
+	while (i-- > 0)
+		to[index][i] = from[i];
+	return (rtn);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	char	**rtn;
+	size_t	i;
+	int		j;
+	int		add;
+
+	if (!(rtn = (char**)malloc((word_counter(s, c) + 1) * sizeof(char*))))
+		return (NULL);
+	i = 1;
+	j = 0;
+	if (*s != c)
+		if ((i = add_str(rtn, s, c, j++)) == 0)
+			return (NULL);
+	while (s[i] != 0)
 	{
-		while (*s == c && *s != '\0')
-			s++;
-		last_start = s;
-		while (*s != c && *s != '\0')
-			s++;
-		if (last_start < s)
+		if ((s[i] != c && s[i - 1] == c))
 		{
-			tab[item] = ft_strsub(last_start, 0, (s - last_start));
-			if (tab[item] == NULL)
-			{
-				while (item > 0)
-					free(tab[--item]);
-				return (-1);
-			}
-			item++;
+			if ((add = add_str(rtn, s + i, c, j++)) == 0)
+				return (NULL);
+			i += add;
 		}
+		else
+			i++;
 	}
-	tab[item] = NULL;
-	return (0);
+	rtn[j] = NULL;
+	return (rtn);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char			**cool_strsplit(char const *s, char c)
 {
-	char	**tab;
-	size_t	count;
-	int		ret;
+	char	**rtn;
+	size_t	i;
+	int		j;
+	int		add;
 
-	count = ft_strwc(s, c);
-	tab = (char **) malloc(sizeof(char *) * (count + 1));
-	if (tab)
+	if (!(rtn = (char**)cool_malloc((word_counter(s, c) + 1) * sizeof(char*))))
+		return (NULL);
+	i = 1;
+	j = 0;
+	if (*s != c)
+		if ((i = cool_add_str(rtn, s, c, j++)) == 0)
+			return (NULL);
+	while (s[i] != 0)
 	{
-		ret = ft_strsubsplit(tab, s, c);
-		if (ret < 0)
+		if ((s[i] != c && s[i - 1] == c))
 		{
-			free(tab);
-			tab = NULL;
+			if ((add = cool_add_str(rtn, s + i, c, j++)) == 0)
+				return (NULL);
+			i += add;
 		}
+		else
+			i++;
 	}
-	return (tab);
+	rtn[j] = NULL;
+	return (rtn);
 }
+

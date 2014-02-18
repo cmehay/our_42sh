@@ -11,15 +11,13 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
 
 int		ms_command_process_add(t_context *context, pid_t child)
 {
 	t_process	*proc;
 	t_process	*curr;
 
-	proc = (t_process *) malloc(sizeof(t_process));
+	proc = (t_process *) cool_malloc(sizeof(t_process));
 	if (!proc)
 		return (-1);
 	proc->pid = child;

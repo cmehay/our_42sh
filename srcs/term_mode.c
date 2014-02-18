@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   term_mode.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 18:59:00 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/03 19:44:08 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 16:39:18 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include <stdlib.h>
-#include <termios.h>
-#include <curses.h>
-#include <term.h>
 
 static void	ms_capabilities_load(t_term *term)
 {

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+         #
+#    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 17:18:15 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/08 16:24:59 by sbethoua         ###   ########.fr        #
+#    Updated: 2014/02/18 16:45:07 by cmehay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,8 +91,14 @@ SRCSFILES = ft_memset.c \
 			ft_realloc.c \
 			ft_strclen.c \
 			ft_strjoinpath.c \
-			ft_get_next_line.c \
-			ft_err_ret.c
+			ft_err_ret.c \
+			ft_isalpha.c \
+			mem_lst.c \
+			cool_itoa.c \
+			cool_next_line.c \
+			ft_arraydel.c \
+			ft_strtest.c
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   term_display.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/03 20:49:55 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 17:50:01 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
 
 int	ms_putchar(int c)
 {
-	return (ft_putchar_fd(c, STDIN_FILENO));
+	ft_putchar_fd(c, STDIN_FILENO);
+	return (1);
 }

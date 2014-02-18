@@ -6,40 +6,51 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 14:36:21 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 17:58:22 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SH_H
 # define SH_H
 
+# include "libft.h"
+
 # include <unistd.h>
 # include <stdint.h>
+# include <sys/stat.h>
+# include <stdlib.h>
+# include <termios.h>
+# include <curses.h>
+# include <term.h>
+# include <sys/ioctl.h>
+# include <sys/wait.h>
+# include <fcntl.h>
+# include <signal.h>
 
 # define __UNUSED__ __attribute__((__unused__))
 
-# define KEY_ARROW_UP          0x000000415b1b
-# define KEY_ARROW_DOWN        0x000000425b1b
-# define KEY_ARROW_RIGHT       0x000000435b1b
-# define KEY_ARROW_LEFT        0x000000445b1b
-# define KEY_SHIFT_ARROW_UP    0x41323b315b1b
-# define KEY_SHIFT_ARROW_DOWN  0x42323b315b1b
-# define KEY_SHIFT_ARROW_RIGHT 0x43323b315b1b
-# define KEY_SHIFT_ARROW_LEFT  0x44323b315b1b
-# define KEY_HOME              0x000000484f1b
-# define KEY_END               0x000000464f1b
-# define KEY_CTRL_X            0x000000000018
-# define KEY_CTRL_Y            0x000000000019
-# define KEY_CTRL_P            0x000000000010
-# define KEY_CTRL_V            0x000000000016
-# define KEY_CTRL_D            0x000000000004
-# define KEY_BACKSPACE         0x00000000007f
-# define KEY_RETURN            0x00000000000a
+# define KEY_IS_ARROW_UP 0x000000415b1b
+# define KEY_IS_ARROW_DOWN 0x000000425b1b
+# define KEY_IS_ARROW_RIGHT 0x000000435b1b
+# define KEY_IS_ARROW_LEFT 0x000000445b1b
+# define KEY_IS_SHIFT_ARROW_UP 0x41323b315b1b
+# define KEY_IS_SHIFT_ARROW_DOWN 0x42323b315b1b
+# define KEY_IS_SHIFT_ARROW_RIGHT 0x43323b315b1b
+# define KEY_IS_SHIFT_ARROW_LEFT 0x44323b315b1b
+# define KEY_IS_HOME 0x000000484f1b
+# define KEY_IS_END 0x000000464f1b
+# define KEY_IS_CTRL_X 0x000000000018
+# define KEY_IS_CTRL_Y 0x000000000019
+# define KEY_IS_CTRL_P 0x000000000010
+# define KEY_IS_CTRL_V 0x000000000016
+# define KEY_IS_CTRL_D 0x000000000004
+# define KEY_IS_BACKSPACE 0x00000000007f
+# define KEY_IS_RETURN 0x00000000000a
 
 typedef enum	e_bool
 {
-	FALSE,
-	TRUE
+	_FALSE,
+	_TRUE
 }				t_bool;
 
 typedef struct	s_env

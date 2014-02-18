@@ -3,21 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 11:50:13 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:37:10 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/22 13:41:48 by cmehay            #+#    #+#             */
+/*   Updated: 2014/02/11 11:59:11 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup(const char *s1)
 {
-	char	*dst;
+	size_t	i;
+	char	*rtn;
 
-	dst = (char *) malloc(sizeof(char) * (ft_strlen(src) + 1));
-	ft_strcpy(dst, src);
-	return (dst);
+	i = 0;
+	while (s1[i] != 0)
+		i++;
+	if ((rtn = ft_strnew(i)) != NULL)
+	{
+		rtn[i] = 0;
+		while (i-- > 0)
+			rtn[i] = s1[i];
+	}
+	return (rtn);
+}
+
+char	*cool_strdup(const char *s1)
+{
+	size_t	i;
+	char	*rtn;
+
+	i = 0;
+	while (s1[i] != 0)
+		i++;
+	if ((rtn = cool_strnew(i)) != NULL)
+	{
+		rtn[i] = 0;
+		while (i-- > 0)
+			rtn[i] = s1[i];
+	}
+	return (rtn);
 }

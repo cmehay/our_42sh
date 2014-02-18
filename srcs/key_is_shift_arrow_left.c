@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include <curses.h>
-#include <term.h>
 
 int	ms_key_is_shift_arrow_left(t_context *ctx, t_cmd_char **cmd_char)
 {

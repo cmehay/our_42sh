@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
 
 t_lex		*ms_ast_lexer_command_alien_find(t_lex *lexer)
 {

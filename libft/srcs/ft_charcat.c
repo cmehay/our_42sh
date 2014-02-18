@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_charcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 15:27:00 by cmehay            #+#    #+#             */
-/*   Updated: 2013/11/25 08:24:34 by cmehay           ###   ########.fr       */
+/*   Created: 2013/11/24 16:25:01 by cmehay            #+#    #+#             */
+/*   Updated: 2013/11/24 16:31:31 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+/*
+** This function adds char c at the end of s1 string and adds '\0'.
+** s1 is returned.
+*/
+char	*ft_charcat(char *s1, char c)
 {
-	return (ft_strncmp(s1, s2, n) == 0);
+	int	i;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	s1[i] = c;
+	s1[i + 1] = 0;
+	return (s1);
 }

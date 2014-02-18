@@ -11,18 +11,15 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 t_str	*ms_str_lstadd(char *var, t_str **l_str)
 {
 	t_str	*elem;
 	t_str	*current;
 
-	if ((elem = (t_str *) malloc(sizeof(t_str))) == NULL)
-		return ((t_str *) ms_function_failed("malloc failed", NULL));
-	elem->str = ft_strdup(var);
+	if ((elem = (t_str *) cool_malloc(sizeof(t_str))) == NULL)
+		return ((t_str *) ms_function_failed("cool_malloc failed", NULL));
+	elem->str = cool_strdup(var);
 	if (elem->str == NULL)
 		return (NULL);
 	elem->next = NULL;
@@ -48,8 +45,8 @@ void	ms_str_lstdel(t_str **l_str, int fd)
 	{
 		ft_putendl_fd(current->str, fd);
 		next = current->next;
-		free(current->str);
-		free(current);
+		cool_free(current->str);
+		cool_free(current);
 		if (next == NULL)
 			break ;
 		current = next;

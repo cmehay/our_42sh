@@ -3,17 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 16:01:31 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/07 16:14:07 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 17:13:32 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
+# include <stdint.h>
+
+# define BUFF_SIZE 200
+
+typedef struct	s_strlen
+{
+	size_t	s1;
+	size_t	s2;
+}				t_strlen;
+
+typedef struct	s_alloc_lst
+{
+	ssize_t				ptr;
+	struct s_alloc_lst	*next;
+}				t_alloc_lst;
 
 typedef struct	s_list
 {
@@ -65,15 +82,9 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
-char	*ft_itoa(int n);
-int		ft_putchar(int c);
-void	ft_putnbr(long n);
 void	ft_putstr(char const *s);
 void	ft_putendl(char const *s);
-int		ft_putchar_fd(int c, int fd);
-int		ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
-void	ft_putnbr_fd(long n, int fd);
 t_list	*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstdel(t_list **aslt, void (*del)(void *, size_t));
@@ -95,7 +106,45 @@ void	ft_putmem(void *ptr);
 void	*ft_realloc(void *ptr, size_t size_o, size_t size_n);
 size_t	ft_strclen(const char *s, char c);
 char	*ft_strjoinpath(char const *s1, char const *s2);
-int		ft_gnl(int const fd, char **line);
 int		ft_err_ret(const char *msg, int errcode);
+
+void	ft_putchar_fd(char c, int fd);
+void	ft_putchar(char c);
+void	ft_putstr_fd(char const *s, int fd);
+void	ft_putnbr_fd(int64_t n, int fd);
+void	ft_putnbr(int64_t n);
+void	ft_arraydel(char **array);
+char	*ft_itoa(int64_t n);
+
+/*
+** Addum
+*/
+int		get_next_line(int const fd, char **line);
+int		ft_strtest(char *str, int (*f)(int));
+
+/*
+** mem_lst.c
+*/
+void	add_to_lst(void *ptr);
+void	*cool_malloc(size_t len);
+void	cool_free(void *ptr);
+
+/*
+** Cool functions
+** Those functions use cool_malloc instead of malloc
+*/
+char	*cool_strnew(size_t size);
+char	*cool_itoa(int64_t n);
+void	cool_strdel(char **as);
+void	cool_memdel(void **ap);
+void	cool_arraydel(char **array);
+char	*cool_strdup(const char *s1);
+char	*cool_strjoin(char const *s1, char const *s2);
+char	*cool_strmap(char const *s, char (*f)(char));
+char	*cool_strmapi(char const *s, char (*f)(unsigned int, char));
+char	**cool_strsplit(char const *s, char c);
+char	*cool_strsub(char const *s, unsigned int start, size_t len);
+char	*cool_strtrim(char const *s);
+int		cool_next_line(int const fd, char **line);
 
 #endif /* !LIBFT_H */

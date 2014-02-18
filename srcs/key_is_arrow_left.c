@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include <curses.h>
-#include <term.h>
 
 int	ms_key_is_arrow_left(t_context *ctx, t_cmd_char **cmd_char)
 {
@@ -24,8 +22,8 @@ int	ms_key_is_arrow_left(t_context *ctx, t_cmd_char **cmd_char)
 	if (current->prev)
 	{
 		tputs(cap->str_cursor_left, STDIN_FILENO, ms_putchar);
-		current->cursor = FALSE;
-		current->prev->cursor = TRUE;
+		current->cursor = _FALSE;
+		current->prev->cursor = _TRUE;
 	}
 	else
 		return (0);

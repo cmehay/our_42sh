@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strtest.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 15:27:00 by cmehay            #+#    #+#             */
-/*   Updated: 2013/11/25 08:24:34 by cmehay           ###   ########.fr       */
+/*   Created: 2014/02/13 01:33:47 by cmehay            #+#    #+#             */
+/*   Updated: 2014/02/13 01:39:20 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+/*
+** This function test a string with a function
+*/
+int	ft_strtest(char *str, int (*f)(int))
 {
-	return (ft_strncmp(s1, s2, n) == 0);
+	if (!str || !*str)
+		return (0);
+	while (*str)
+	{
+		if (!f((int)*(str++)))
+			return (0);
+	}
+	return (1);
 }

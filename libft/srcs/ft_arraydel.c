@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_arraydel.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 15:27:00 by cmehay            #+#    #+#             */
-/*   Updated: 2013/11/25 08:24:34 by cmehay           ###   ########.fr       */
+/*   Created: 2014/02/11 13:39:17 by cmehay            #+#    #+#             */
+/*   Updated: 2014/02/13 01:41:42 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+void	ft_arraydel(char **array)
 {
-	return (ft_strncmp(s1, s2, n) == 0);
+	char	**tmp;
+
+	tmp = array;
+	while (*array)
+		free(*(array++));
+	free(tmp);
+}
+
+void	cool_arraydel(char **array)
+{
+	char	**tmp;
+
+	tmp = array;
+	while (*array)
+		cool_free(*(array++));
+	cool_free(tmp);
 }
