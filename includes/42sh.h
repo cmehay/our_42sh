@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   42sh.h                                    :+:      :+:    :+:   */
+/*   42sh.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/17 18:34:26 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 13:53:28 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,7 @@ int			ms_builtin_env(t_context *context, char **argv, int outfd);
 int			ms_builtin_setenv(t_context *context, char **argv, int outfd);
 int			ms_builtin_unsetenv(t_context *context, char **argv, int outfd);
 int			ms_builtin_exit(t_context *context, char **argv, int outfd);
+int			ms_builtin_echo(char **argv);
 
 void		ms_signal_catch(void);
 

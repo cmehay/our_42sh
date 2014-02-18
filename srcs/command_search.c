@@ -6,7 +6,7 @@
 /*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/28 19:31:04 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 13:50:09 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int			ms_builtins_search_exec(t_context *context, char **argv, int outfd)
 		ms_builtin_cd(context, argv, outfd);
 		return (0);
 	}
+	if (ft_strcmp("echo", argv[0]) == 0)
+		return (ms_builtin_echo(argv));
 	if (ft_strcmp("setenv", argv[0]) == 0)
 	{
 		ms_builtin_setenv(context, argv, outfd);

@@ -6,7 +6,7 @@
 #    By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/17 18:08:29 by dcouly           ###   ########.fr        #
+#    Updated: 2014/02/18 13:52:48 by dcouly           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,7 @@ SRCSFILES = 42sh.c \
 			builtin_cd.c \
 			builtin_cd_pwd_modify.c \
 			builtin_env.c \
+			builtin_echo.c \
 			builtin_setenv.c \
 			builtin_unsetenv.c \
 			builtin_exit.c \
