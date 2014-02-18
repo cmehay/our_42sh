@@ -6,7 +6,7 @@
 /*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 17:19:07 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/08 16:11:41 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 17:54:27 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,17 @@ void		ms_cmd_char_lstdelone(t_cmd_char *current)
 	}
 }
 
-void		ms_cmd_char_lstdel(t_cmd_char *cmd_char)
+void		ms_cmd_char_lstdel(t_cmd_char **cmd_char)
 {
 	t_cmd_char	*current;
 	t_cmd_char	*next;
 
-	current = cmd_char;
+	current = *cmd_char;
 	while (current)
 	{
 		next = current->next;
 		free(current);
 		current = next;
 	}
+	*cmd_char = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 14:36:21 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 17:56:08 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ int			ms_builtin_setenv(t_context *context, char **argv, int outfd);
 int			ms_builtin_unsetenv(t_context *context, char **argv, int outfd);
 int			ms_builtin_exit(t_context *context, char **argv, int outfd);
 int			ms_builtin_echo(char **argv);
+int			ms_builtin_history(t_context *ctx);
 
 void		ms_signal_catch(void);
 
@@ -295,10 +296,12 @@ int			ms_key_lookup(t_context *ctx, uint64_t key, t_cmd_char **cmd_char);
 
 t_cmd_char	*ms_cmd_char_lstadd(t_cmd_char *cmd_char, char character);
 void		ms_cmd_char_lstdelone(t_cmd_char *current);
-void		ms_cmd_char_lstdel(t_cmd_char *cmd_char);
+void		ms_cmd_char_lstdel(t_cmd_char **cmd_char);
+void		ms_cmd_char_display(t_cmd_char *cmd_char);
 
 t_history	*ms_history_lstadd(t_history *history, t_cmd_char *cmd_char);
 void		ms_history_lstdel(t_history *history);
+t_cmd_char	*ms_keep_memory(t_cmd_char *cmd_char, int opt);
 
 int			ms_putchar(int c);
 

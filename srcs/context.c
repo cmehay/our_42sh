@@ -6,7 +6,7 @@
 /*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:52:02 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/17 18:56:11 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 17:16:22 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void		ms_context_init(t_context *context)
 	context->env = NULL;
 	context->processes = NULL;
 	context->term = NULL;
-	context->history = NULL;
+	context->history = ms_history_lstadd(context->history,
+			ms_cmd_char_lstadd(NULL, 0));
 }
 
 t_context	*ms_context_fill(t_context *context, char **environ)

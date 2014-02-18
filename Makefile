@@ -6,7 +6,7 @@
 #    By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/18 13:52:48 by dcouly           ###   ########.fr        #
+#    Updated: 2014/02/18 15:47:24 by dcouly           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ SRCSFILES = 42sh.c \
 			builtin_setenv.c \
 			builtin_unsetenv.c \
 			builtin_exit.c \
+			builtin_history.c \
 			signals.c \
 			errors.c
 OBJS = $(SRCS:.c=.o)

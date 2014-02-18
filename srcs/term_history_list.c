@@ -6,7 +6,7 @@
 /*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/08 15:24:00 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 17:32:38 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ t_history	*ms_history_lstadd(t_history *history, t_cmd_char *cmd_char)
 		history = elem;
 		return (elem);
 	}
-	elem->next = history;
-	history->prev = elem;
-	history = elem;
+	if (history->next)
+		history->next->prev = elem;
+	elem->next = history->next;
+	elem->prev = history;
+	history->next = elem;
 	return (history);
 }
 
