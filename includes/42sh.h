@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   42sh.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 13:53:28 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 14:36:21 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINISHELL2_H
-# define FT_MINISHELL2_H
+#ifndef SH_H
+# define SH_H
 
 # include <unistd.h>
 # include <stdint.h>
@@ -319,6 +319,5 @@ int			ms_key_is_ctrl_v(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_ctrl_d(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_backspace(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_return(t_context *ctx, char **cmd, t_cmd_char **cmd_char);
-/**/
 
-#endif /* !FT_MINISHELL2_H */
+#endif /* !SH_H */
