@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   str_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcouly <dcouly@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/17 17:56:05 by dcouly            #+#    #+#             */
-/*   Updated: 2014/02/17 18:47:16 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 23:02:27 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 t_str	*ms_str_lstadd(char *var, t_str **l_str)
 {

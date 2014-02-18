@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   key_is_return.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:24:20 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 15:33:00 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 23:00:47 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
 
 int	ms_key_is_return(t_context *ctx, char **cmd_line, t_cmd_char **cmd_char)
 {

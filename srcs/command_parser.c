@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   command_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:32:58 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/06 18:17:36 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:47:49 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
 
 t_node	*ms_command_parse(t_context *context)
 {

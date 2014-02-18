@@ -6,11 +6,13 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 19:47:40 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 16:38:28 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:42:46 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 int	ms_builtin_cd_pwd_oldpwd_modify(t_context *context, char **old_pwd)
 {

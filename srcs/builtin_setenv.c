@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_setenv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 18:06:04 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/29 19:21:56 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:43:41 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <stdlib.h>
 
 static int	ms_setenv_exec_env(t_context *context, char **argv, int outfd)
 {

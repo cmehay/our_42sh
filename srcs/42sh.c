@@ -6,11 +6,12 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:24:20 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 16:46:37 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:27:26 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
 
 int	main(int __UNUSED__ argc, char __UNUSED__ **argv, char **environ)
 {

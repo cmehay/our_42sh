@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exec_command_child.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/26 21:55:02 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:56:50 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <stdlib.h>
 
 static void	ms_command_exec_child_dups(int infd, int outfd)
 {

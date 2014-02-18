@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   context.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:52:02 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 17:16:22 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:48:13 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <stdlib.h>
 
 t_context	*ms_context_get(void)
 {

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   term_history_list.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 17:32:38 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 23:03:02 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include <stdlib.h>
 
 t_history	*ms_history_lstadd(t_history *history, t_cmd_char *cmd_char)
 {

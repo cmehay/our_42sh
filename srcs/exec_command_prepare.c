@@ -6,11 +6,15 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 16:25:26 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:56:37 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 static void	ms_exec_reader_child(t_command *cmd)
 {

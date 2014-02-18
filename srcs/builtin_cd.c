@@ -6,11 +6,14 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 17:00:03 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 17:53:03 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:42:31 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <stdlib.h>
+#include <sys/stat.h>
 
 static int	ms_cd_home(t_context *context)
 {

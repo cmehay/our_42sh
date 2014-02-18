@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ast_operators.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/22 20:45:14 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:41:54 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include <stdlib.h>
 
 static t_node	*ms_ast_build_children(t_node *node, t_lex *llexer, t_lex *item)
 {

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ast_command_pipe.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/22 20:45:14 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:37:08 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
 
 static t_node	*ms_ast_command_stdin_pipe_lookup(t_node *node)
 {

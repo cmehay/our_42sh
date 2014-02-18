@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   key_is_ctrl_d.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:24:20 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 16:42:28 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 23:00:05 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include <stdlib.h>
 
 int	ms_key_is_ctrl_d(t_context *ctx, t_cmd_char **cmd_char)
 {

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 17:28:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/22 16:49:00 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:48:34 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
 
 void	*ms_function_failed(char *msg, void *ret)
 {

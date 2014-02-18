@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   key_is_arrow_up.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:24:20 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 18:11:41 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:59:38 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <curses.h>
+#include <term.h>
 
 void		ms_cmd_char_display(t_cmd_char *cmd_char)
 {

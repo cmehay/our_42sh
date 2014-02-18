@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 18:25:56 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/24 19:46:31 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 23:01:33 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <stdlib.h>
 
 static t_lex	*ms_lex_lst_last_get(t_lex *list)
 {

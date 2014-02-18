@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 20:19:43 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/18 23:05:04 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 # define SH_H
 
 # include "libft.h"
-
-# include <unistd.h>
-# include <stdint.h>
-# include <sys/stat.h>
-# include <stdlib.h>
-# include <termios.h>
-# include <curses.h>
-# include <term.h>
-# include <sys/ioctl.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <signal.h>
 
 # define __UNUSED__ __attribute__((__unused__))
 

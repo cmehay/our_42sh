@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   var_name_value_get.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 18:34:42 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/22 17:05:07 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 23:03:47 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <stdlib.h>
 
 char	*ms_var_name_get(char *var)
 {

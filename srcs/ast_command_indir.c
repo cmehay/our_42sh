@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ast_command_indir.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/28 19:18:34 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:37:19 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
 
 t_lex		*ms_ast_lexer_command_alien_find(t_lex *lexer)
 {

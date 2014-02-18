@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   command_line_get.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 17:58:26 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:46:51 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <curses.h>
+#include <term.h>
 
 t_cmd_char	*ms_get_cursor_position(t_cmd_char **cmd_char)
 {

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   command_lexer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/29 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/24 19:46:46 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:46:32 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <stdlib.h>
 
 static int	ms_lexer_skip_spaces(char **ptr)
 {

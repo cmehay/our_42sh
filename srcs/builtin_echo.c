@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcouly <dcouly@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/18 13:42:50 by dcouly            #+#    #+#             */
-/*   Updated: 2014/02/18 13:53:57 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:42:56 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
 
 int		ms_builtin_echo(char **argv)
 {

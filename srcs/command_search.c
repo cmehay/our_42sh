@@ -6,11 +6,13 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 20:18:49 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:48:03 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <stdlib.h>
 
 static char	**ms_paths_get(t_env __UNUSED__ *env, char *cmd)
 {

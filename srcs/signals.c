@@ -6,11 +6,17 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:10:27 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 16:39:54 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/18 23:02:09 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
+#include "libft.h"
+#include <signal.h>
+#include <stdlib.h>
+#include <sys/ioctl.h>
+#include <termcap.h>
+#include <termios.h>
 
 static void	ms_signal_killall(int sig)
 {
