@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   42sh.h                                    :+:      :+:    :+:   */
+/*   42sh.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/17 19:47:53 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 13:04:43 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef 42SH_H
-# define 42SH_H
+#ifndef SH_H
+# define SH_H
 
 # include <unistd.h>
 # include <stdint.h>
@@ -319,4 +319,4 @@ int			ms_key_is_ctrl_d(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_backspace(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_return(t_context *ctx, char **cmd, t_cmd_char **cmd_char);
 
-#endif /* !42SH_H */
+#endif /* !SH_H */
