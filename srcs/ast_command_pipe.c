@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
 
 static t_node	*ms_ast_command_stdin_pipe_lookup(t_node *node)
 {

@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 
 static char	*ms_var_join(char const *s1, char const *s2)
 {
@@ -24,7 +20,7 @@ static char	*ms_var_join(char const *s1, char const *s2)
 
 	len1 = ft_strlen(s1);
 	len = len1 + ft_strlen(s2) + 1;
-	var = (char *) malloc(sizeof(char) * (len + 2));
+	var = (char *) cool_malloc(sizeof(char) * (len + 2));
 	if (var == NULL)
 		return (NULL);
 	ft_strcpy(var, s1);
@@ -46,15 +42,15 @@ char		**ms_env_clone(t_env *env)
 		current = current->next;
 		i++;
 	}
-	if ((environ = (char **) malloc(sizeof(char *) * (i + 1))) == NULL)
-		return ((char **) ms_function_failed("malloc failed", NULL));
+	if ((environ = (char **) cool_malloc(sizeof(char *) * (i + 1))) == NULL)
+		return ((char **) ms_function_failed("cool_malloc failed", NULL));
 	i = 0;
 	current = env;
 	while (current)
 	{
 		environ[i] = ms_var_join(current->name, current->value);
 		if (environ[i] == NULL)
-			return ((char **) ms_function_failed("malloc failed", NULL));
+			return ((char **) ms_function_failed("cool_malloc failed", NULL));
 		i++;
 		current = current->next;
 	}

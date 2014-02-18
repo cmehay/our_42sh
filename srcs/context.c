@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
 
 t_context	*ms_context_get(void)
 {
@@ -20,8 +18,8 @@ t_context	*ms_context_get(void)
 
 	if (context == NULL)
 	{
-		if ((context = (t_context *) malloc(sizeof(t_context))) == NULL)
-			return ((t_context *) ms_function_failed("malloc failed", NULL));
+		if ((context = (t_context *) cool_malloc(sizeof(t_context))) == NULL)
+			return ((t_context *) ms_function_failed("cool_malloc failed", NULL));
 		return (context);
 	}
 	else
@@ -44,7 +42,7 @@ t_context	*ms_context_fill(t_context *context, char **environ)
 	context->env = ms_env_get(context);
 	if (context->env == NULL)
 		return (NULL);
-	if ((context->term = (t_term *) malloc(sizeof(t_term))) == NULL)
+	if ((context->term = (t_term *) cool_malloc(sizeof(t_term))) == NULL)
 		return (NULL);
 	return (context);
 }
@@ -56,7 +54,7 @@ void		ms_context_clean(t_context *context)
 	current = context->env;
 	while (current)
 		ms_env_lstdelone(&current);
-	free(context->term);
+	cool_free(context->term);
 	ms_history_lstdel(context->history);
-	free(context);
+	cool_free(context);
 }

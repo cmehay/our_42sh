@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 12:19:15 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/03 15:18:10 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/20 10:13:54 by cmehay            #+#    #+#             */
+/*   Updated: 2013/12/17 12:30:04 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(long n)
+void	ft_putnbr(int64_t n)
 {
-	ft_putnbr_fd(n, STDOUT_FILENO);
+	ft_putnbr_fd(n, 1);
 }

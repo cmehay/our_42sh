@@ -3,34 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 11:50:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:37:18 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/22 14:41:45 by cmehay            #+#    #+#             */
+/*   Updated: 2013/12/17 12:28:12 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+static size_t	ft_min(size_t a, size_t b)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	if (a < b)
+		return (a);
+	return (b);
+}
 
-	i = 0;
-	j = 0;
-	while (dst[i] != '\0' && i < size)
-		i++;
-	k = 0;
-	while (src[k] != '\0')
-		k++;
-	while (src[j] && size > j + i + 1)
-	{
-		dst[i + j] = src[j];
-		j++;
-	}
-	if (i != size)
-		dst[i + j] = '\0';
-	return (i + k);
+size_t			ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	dst_len;
+	size_t	src_len;
+	ssize_t	catsize;
+
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	catsize = (ssize_t) size - dst_len - 1;
+	ft_strncat(dst, src, catsize * (catsize > 0));
+	return (src_len + ft_min(size, dst_len));
 }

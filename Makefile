@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+         #
+#    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/18 15:47:24 by dcouly           ###   ########.fr        #
+#    Updated: 2014/02/18 20:17:46 by cmehay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 42sh
-CC = gcc
+CC = clang
 INCLUDES = -I ./includes/ -I ./libft/includes/
 CFLAGS = -g -Wall -Wextra -Werror $(INCLUDES)
 LDFLAGS = -L libft/ -lft -L /usr/lib -ltermcap

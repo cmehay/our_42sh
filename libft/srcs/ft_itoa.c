@@ -3,62 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 18:16:56 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/17 15:53:29 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/20 10:10:23 by cmehay            #+#    #+#             */
+/*   Updated: 2014/02/10 18:02:39 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-size_t	ft_itoa_len(long n, size_t *div)
+static char		*ft_initmem(int size, int64_t n)
 {
-	unsigned long	abs_n;
-	size_t			i;
-
-	i = 0;
-	*div = 1;
-	abs_n = (n >= 0) ? n : -n;
-	while (*div <= abs_n)
-	{
-		*div *= 10;
-		i++;
-	}
-	if (!abs_n)
-		i++;
-	else
-		*div /= 10;
-	return (i + (n < 0));
-}
-
-void	ft_itoa_fill(char *str, long n, size_t div)
-{
-	unsigned long	abs_n;
-	size_t			i;
-
-	i = 0;
-	if (n < 0)
-		str[i++] = '-';
-	abs_n = (n >= 0) ? n : -n;
-	while (div > 0)
-	{
-		str[i++] = '0' + (abs_n / div) % 10;
-		div /= 10;
-	}
-	str[i] = '\0';
-}
-
-char	*ft_itoa(int n)
-{
-	size_t	div;
-	size_t	len;
 	char	*str;
 
-	len = ft_itoa_len(n, &div);
-	str = (char *) malloc(sizeof(char) * (len + 1));
-	if (str != NULL)
-		ft_itoa_fill(str, n, div);
+	if (n < 0)
+		size++;
+	str = ft_strnew(size);
 	return (str);
+}
+
+static char		*ft_charcat(char *s1, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	s1[i] = c;
+	s1[i + 1] = 0;
+	return (s1);
+}
+
+static void		ft_itoa_cmp(int64_t n, char *str)
+{
+	uint64_t	usgn_copy;
+	int64_t		nb_size;
+	int64_t		nb_copy;
+	int64_t		nb_print;
+
+	if (n < 0)
+		ft_charcat(str, '-');
+	usgn_copy = n * ((n > 0) + (n > 0) - 1);
+	nb_size = 1;
+	nb_copy = usgn_copy;
+	while (nb_copy / 10 > 0)
+	{
+		nb_size *= 10;
+		nb_copy /= 10;
+	}
+	while (nb_size > 0)
+	{
+		nb_print = 0;
+		nb_print = usgn_copy / nb_size;
+		ft_charcat(str, nb_print + '0');
+		usgn_copy = usgn_copy % nb_size;
+		nb_size = nb_size / 10;
+	}
+}
+
+char		*ft_itoa(int64_t n)
+{
+	uint64_t	usgn_cp;
+	int64_t		nb_size;
+	char		*rtn;
+
+	usgn_cp = n * ((n > 0) + (n > 0) - 1);
+	nb_size = 1;
+	while (usgn_cp / 10 > 0)
+	{
+		usgn_cp /= 10;
+		nb_size++;
+	}
+	if ((rtn = ft_initmem(nb_size, n)) != NULL)
+		ft_itoa_cmp(n, rtn);
+	return (rtn);
 }

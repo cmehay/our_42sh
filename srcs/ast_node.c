@@ -11,14 +11,12 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
 
 t_node	*ms_ast_node_alloc(t_node *parent, t_direction dir, t_nodetype type)
 {
 	t_node	*node;
 
-	node = (t_node *) malloc(sizeof(t_node));
+	node = (t_node *) cool_malloc(sizeof(t_node));
 	if (node)
 	{
 		node->type = type;
@@ -40,9 +38,9 @@ void	ms_ast_node_clean(t_node **node)
 	if ((*node)->data)
 	{
 		if (!(*node)->cleanup)
-			(*node)->cleanup = free;
+			(*node)->cleanup = cool_free;
 		(*node)->cleanup((*node)->data);
 	}
-	free(*node);
+	cool_free(*node);
 	*node = NULL;
 }

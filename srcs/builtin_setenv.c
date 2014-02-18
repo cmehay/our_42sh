@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
 
 static int	ms_setenv_exec_env(t_context *context, char **argv, int outfd)
 {
@@ -26,9 +24,9 @@ static int	ms_setenv_exec_env(t_context *context, char **argv, int outfd)
 
 static void	ms_setenv_exists(t_env **var, char *value, char **name)
 {
-	free((*var)->value);
+	cool_free((*var)->value);
 	(*var)->value = value;
-	free(*name);
+	cool_free(*name);
 }
 
 int			ms_builtin_setenv(t_context *context, char **argv,
@@ -55,8 +53,8 @@ int			ms_builtin_setenv(t_context *context, char **argv,
 			continue ;
 		}
 		var = ms_env_lstadd(context, argv[i++]);
-		free(name);
-		free(value);
+		cool_free(name);
+		cool_free(value);
 	}
 	return (0);
 }

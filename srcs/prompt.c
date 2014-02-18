@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
 
 static void	ms_prompt_display(t_context *context)
 {

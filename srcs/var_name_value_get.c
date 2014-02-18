@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
 
 char	*ms_var_name_get(char *var)
 {
@@ -24,11 +22,11 @@ char	*ms_var_name_get(char *var)
 		i++;
 	if (var[i] == '\0')
 		return (NULL);
-	name = ft_strsub(var, 0, i);
+	name = cool_strsub(var, 0, i);
 	if (i == 0)
-		name = ft_strsub(var, 0, 1);
+		name = cool_strsub(var, 0, 1);
 	if (name == NULL)
-		return ((char *) ms_function_failed("malloc failed", NULL));
+		return ((char *) ms_function_failed("cool_malloc failed", NULL));
 	return (name);
 }
 
@@ -43,9 +41,9 @@ char	*ms_var_value_get(char *var)
 	if (var[i] == '\0')
 		return (NULL);
 	i++;
-	value = ft_strsub(var, i, ft_strlen(var) - i);
+	value = cool_strsub(var, i, ft_strlen(var) - i);
 	if (value == NULL)
-		return ((char *) ms_function_failed("malloc failed", NULL));
+		return ((char *) ms_function_failed("cool_malloc failed", NULL));
 	return (value);
 }
 

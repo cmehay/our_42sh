@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include <stdlib.h>
 
 static t_node	*ms_ast_build_children(t_node *node, t_lex *llexer, t_lex *item)
 {

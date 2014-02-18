@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 11:50:55 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:37:34 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/22 14:59:37 by cmehay            #+#    #+#             */
+/*   Updated: 2013/11/26 12:25:19 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t n)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
+	size_t	s2_len;
 	size_t	i;
-	size_t	j;
 
+	s2_len = ft_strlen(s2);
+	if (s2_len == 0 || n == 0)
+		return ((char*) s1);
 	i = 0;
-	if (to_find[0] == '\0')
-		return ((char *) str);
-	while (str[i] != '\0' && i < n)
+	while (*s1 != 0 && i < n && (i + s2_len <= n))
 	{
-		j = 0;
-		while (to_find[j] == str[i + j] && to_find[j] != '\0' && (i + j) < n)
-			j++;
-		if (to_find[j] == '\0')
-			return ((char *) &str[i]);
+		if (ft_memcmp(s1, s2, s2_len) == 0)
+			return ((char*) s1);
+		s1++;
 		i++;
 	}
-	return ((char *) NULL);
+	return (NULL);
 }

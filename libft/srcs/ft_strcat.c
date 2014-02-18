@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 11:50:26 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:36:58 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/20 15:23:31 by cmehay            #+#    #+#             */
+/*   Updated: 2013/11/26 09:06:10 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dst, const char *src)
+char	*ft_strcat(char *s1, const char *s2)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	while (dst[i] != '\0')
-		i++;
 	j = 0;
-	while (src[j] != '\0')
-		dst[i++] = src[j++];
-	dst[i] = '\0';
-	return (dst);
+	while (s1[i] != 0)
+		i++;
+	while (s2[j] != 0)
+		s1[i++] = s2[j++];
+	s1[i] = 0;
+	return (s1);
 }

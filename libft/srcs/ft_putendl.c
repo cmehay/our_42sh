@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/25 14:28:52 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:36:48 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/20 10:39:24 by cmehay            #+#    #+#             */
+/*   Updated: 2013/11/20 10:40:46 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putendl(char const *s)
 {
-	ft_putendl_fd(s, STDOUT_FILENO);
+	ft_putendl_fd(s, 1);
 }

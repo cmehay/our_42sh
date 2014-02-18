@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <curses.h>
-#include <term.h>
 
 void		ms_cmd_char_display(t_cmd_char *cmd_char)
 {

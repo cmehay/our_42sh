@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
 
 int	ms_key_is_return(t_context *ctx, char **cmd_line, t_cmd_char **cmd_char)
 {
@@ -19,7 +18,7 @@ int	ms_key_is_return(t_context *ctx, char **cmd_line, t_cmd_char **cmd_char)
 		ctx->history = ctx->history->prev;
 	*cmd_line = ms_convert_list_to_str(*cmd_char);
 	if (*cmd_line == NULL)
-		return (ms_err_ret("malloc failed", -1));
+		return (ms_err_ret("cool_malloc failed", -1));
 	if (ft_strcmp(*cmd_line, ""))
 		ctx->history = ms_history_lstadd(ctx->history, *cmd_char);
 	return (1);

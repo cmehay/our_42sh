@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
 
 static int	ms_lexer_skip_spaces(char **ptr)
 {
@@ -41,7 +39,7 @@ static int	ms_lexer_token_get_next(char **cmd, char **token, t_ttype *type)
 		ret = ms_lexer_handle_normal(&start, &end, &ptr, type);
 	if (ret < 0)
 		return (-1);
-	*token = ft_strsub(start, 0, (ptr - start));
+	*token = cool_strsub(start, 0, (ptr - start));
 	if (!*token)
 		return (-1);
 	*cmd = end;

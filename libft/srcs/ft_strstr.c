@@ -3,31 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 11:50:49 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:37:39 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/22 14:59:37 by cmehay            #+#    #+#             */
+/*   Updated: 2013/11/23 13:46:01 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *str, const char *to_find)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	size_t	i;
-	size_t	j;
+	size_t	s2_len;
 
-	i = 0;
-	if (to_find[0] == '\0')
-		return ((char *) str);
-	while (str[i] != '\0')
+	s2_len = ft_strlen(s2);
+	if (s2_len == 0)
+		return ((char*) s1);
+	while (*s1 != 0)
 	{
-		j = 0;
-		while (to_find[j] == str[i + j] && to_find[j] != '\0')
-			j++;
-		if (to_find[j] == '\0')
-			return ((char *) &str[i]);
-		i++;
+		if (ft_memcmp(s1, s2, s2_len) == 0)
+			return ((char*) s1);
+		s1++;
 	}
-	return ((char *) NULL);
+	return (NULL);
 }

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include <stdlib.h>
 
 t_ttype	ms_lexer_stype_match(char c)
 {

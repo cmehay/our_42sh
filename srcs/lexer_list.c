@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include "libft.h"
-#include <stdlib.h>
 
 static t_lex	*ms_lex_lst_last_get(t_lex *list)
 {
@@ -29,10 +27,10 @@ t_lex			*ms_lex_lstadd(t_lex **list, char *token, t_ttype type)
 	t_lex	*item;
 	t_lex	*last;
 
-	item = (t_lex *) malloc(sizeof(t_lex));
+	item = (t_lex *) cool_malloc(sizeof(t_lex));
 	if (!item)
 	{
-		ms_err_display("malloc failed.");
+		ms_err_display("cool_malloc failed.");
 		return (NULL);
 	}
 	item->token = token;
@@ -58,8 +56,8 @@ void			ms_lexer_lstdelone(t_lex **list, t_lex *item)
 		item->prev->next = item->next;
 	if (item->next)
 		item->next->prev = item->prev;
-	free(item->token);
-	free(item);
+	cool_free(item->token);
+	cool_free(item);
 }
 
 void			ms_lexer_lstdel(t_lex **list)
@@ -71,8 +69,8 @@ void			ms_lexer_lstdel(t_lex **list)
 	while (item)
 	{
 		tmp = item->next;
-		free(item->token);
-		free(item);
+		cool_free(item->token);
+		cool_free(item);
 		item = tmp;
 	}
 	*list = NULL;

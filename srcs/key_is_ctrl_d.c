@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "42sh.h"
-#include <stdlib.h>
 
 int	ms_key_is_ctrl_d(t_context *ctx, t_cmd_char **cmd_char)
 {
