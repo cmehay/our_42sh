@@ -3,41 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 12:36:28 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 20:43:46 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/20 18:07:55 by cmehay            #+#    #+#             */
+/*   Updated: 2014/02/11 12:56:34 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-
-int		ft_isspace(int c)
-{
-	return (c == ' ' || c == '\n' || c == '\t');
-}
 
 char	*ft_strtrim(char const *s)
 {
-	int		i;
-	int		len;
-	char	*str;
+	size_t	len;
+	size_t	start;
+	long	size;
+	size_t	i;
+	char	*rtn;
 
+	len = ft_strlen(s) - 1;
+	if ((int) len == -1)
+		return (ft_strnew(1));
+	start = 0;
 	i = 0;
-	len = ft_strlen(s);
-	while (ft_isspace(s[i]))
-		i++;
-	if (s[i] == '\0')
-		return (NULL);
-	while (ft_isspace(s[len - 1]))
+	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
+		start++;
+	while (s[len] == ' ' || s[len] == '\n' || s[len] == '\t')
 		len--;
-	len -= i;
-	str = (char *) malloc(sizeof(char) * (len + 1));
-	if (str != NULL)
-	{
-		str = ft_strncpy(str, &s[i], len);
-		str[len] = '\0';
-	}
-	return (str);
+	size = len - start;
+	if ((rtn = (char*) malloc(sizeof(char) * (size * (size > 0) + 1))) != NULL)
+		while (start < len + 1)
+			rtn[i++] = s[start++];
+	rtn[i] = 0;
+	return (rtn);
+}
+
+char	*cool_strtrim(char const *s)
+{
+	size_t	len;
+	size_t	start;
+	long	size;
+	size_t	i;
+	char	*rtn;
+
+	len = ft_strlen(s) - 1;
+	if ((int) len == -1)
+		return (cool_strnew(1));
+	start = 0;
+	i = 0;
+	while (s[start] == ' ' || s[start] == '\n' || s[start] == '\t')
+		start++;
+	while (s[len] == ' ' || s[len] == '\n' || s[len] == '\t')
+		len--;
+	size = len - start;
+	if ((rtn = (char*)cool_malloc(sizeof(char) * (size * (size > 0) + 1)))
+		!= NULL)
+		while (start < len + 1)
+			rtn[i++] = s[start++];
+	rtn[i] = 0;
+	return (rtn);
 }

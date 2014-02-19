@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 17:00:03 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 13:47:44 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:42:31 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	ms_cd_path(t_context *context, char **argv)
 		return (ms_err_ret("cd: variable 'PWD' unset", 1));
 	path = ft_strjoinpath(pwd_pwd->value, argv[1]);
 	if (path == NULL)
-		return (ms_err_ret("malloc failed", 1));
+		return (ms_err_ret("cool_malloc failed", 1));
 	if (stat(path, &st_path) == -1)
 		return (ms_err_ret("cd: no such file or directory", 1));
 	if (st_path.st_mode & S_IFDIR)
@@ -101,6 +101,6 @@ int			ms_builtin_cd(t_context *context, char **argv, int __UNUSED__ outfd)
 	if (ret == 0)
 		ret = ms_builtin_cd_pwd_oldpwd_modify(context, &old_pwd);
 	else
-		free(old_pwd);
+		cool_free(old_pwd);
 	return (ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   context.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:52:02 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 17:16:22 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:48:13 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_context	*ms_context_get(void)
 
 	if (context == NULL)
 	{
-		if ((context = (t_context *) malloc(sizeof(t_context))) == NULL)
-			return ((t_context *) ms_function_failed("malloc failed", NULL));
+		if ((context = (t_context *) cool_malloc(sizeof(t_context))) == NULL)
+			return ((t_context *) ms_function_failed("cool_malloc failed", NULL));
 		return (context);
 	}
 	else
@@ -44,7 +44,7 @@ t_context	*ms_context_fill(t_context *context, char **environ)
 	context->env = ms_env_get(context);
 	if (context->env == NULL)
 		return (NULL);
-	if ((context->term = (t_term *) malloc(sizeof(t_term))) == NULL)
+	if ((context->term = (t_term *) cool_malloc(sizeof(t_term))) == NULL)
 		return (NULL);
 	return (context);
 }
@@ -56,7 +56,7 @@ void		ms_context_clean(t_context *context)
 	current = context->env;
 	while (current)
 		ms_env_lstdelone(&current);
-	free(context->term);
+	cool_free(context->term);
 	ms_history_lstdel(context->history);
-	free(context);
+	cool_free(context);
 }

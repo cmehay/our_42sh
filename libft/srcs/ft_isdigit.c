@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 11:51:15 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/16 18:56:44 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/21 07:22:17 by cmehay            #+#    #+#             */
+/*   Updated: 2013/11/21 07:58:30 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	ft_isdigit(int c)
 {
-	return (c >= '0' && c <= '9');
+	if (c >= 0x30 && c <= 0x39)
+		return (1);
+	return (0);
 }

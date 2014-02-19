@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   term_history_list.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 17:32:38 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 23:03:02 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_history	*ms_history_lstadd(t_history *history, t_cmd_char *cmd_char)
 {
 	t_history	*elem;
 
-	if ((elem = (t_history *) malloc(sizeof(t_history))) == NULL)
-		return ((t_history *) ms_function_failed("malloc failed", NULL));
+	if ((elem = (t_history *) cool_malloc(sizeof(t_history))) == NULL)
+		return ((t_history *) ms_function_failed("cool_malloc failed", NULL));
 	elem->cmd_char = cmd_char;
 	elem->prev = NULL;
 	elem->next = NULL;
@@ -44,8 +44,8 @@ void	ms_history_lstdel(t_history *history)
 	while (current)
 	{
 		next = current->next;
-		free(current->cmd_char);
-		free(current);
+		cool_free(current->cmd_char);
+		cool_free(current);
 		current = next;
 	}
 	current = NULL;

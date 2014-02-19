@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ast_command_args.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 21:52:19 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/26 21:52:26 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:30:36 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ms_ast_command_args(t_command *cmd, t_lex *lexer)
 
 	argv_size = ms_ast_lexer_count(lexer);
 	argv_size++;
-	argv = (char **) malloc(argv_size * sizeof(char *));
+	argv = (char **) cool_malloc(argv_size * sizeof(char *));
 	if (!argv)
 		return (-1);
 	i = 0;

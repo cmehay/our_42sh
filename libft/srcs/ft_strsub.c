@@ -3,25 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 11:55:14 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:37:40 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/22 15:27:25 by cmehay            #+#    #+#             */
+/*   Updated: 2014/02/11 13:18:13 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
+	char	*rtn;
+	size_t	i;
 
-	str = (char *) malloc(sizeof(char) * (len + 1));
-	if (str != NULL)
+	i = 0;
+	if ((rtn = ft_strnew(len)) != NULL)
 	{
-		ft_strncpy(str, &s[start], len);
-		str[len] = '\0';
+		while (i < len)
+		{
+			rtn[i] = s[i + start];
+			i++;
+		}
 	}
-	return (str);
+	return (rtn);
+}
+
+char	*cool_strsub(char const *s, unsigned int start, size_t len)
+{
+	char	*rtn;
+	size_t	i;
+
+	i = 0;
+	if ((rtn = cool_strnew(len)) != NULL)
+	{
+		while (i < len)
+		{
+			rtn[i] = s[i + start];
+			i++;
+		}
+	}
+	return (rtn);
 }

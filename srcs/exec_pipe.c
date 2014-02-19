@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/24 19:08:27 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:52:47 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int		ms_exec_pipe_create(t_node *node)
 	int	*pfd;
 	int	ret;
 
-	pfd = malloc(2 * sizeof(int));
+	pfd = cool_malloc(2 * sizeof(int));
 	if (!pfd)
 		return (-1);
 	ret = pipe(pfd);
 	if (ret < 0)
-		free(pfd);
+		cool_free(pfd);
 	else
 		node->data = pfd;
 	return (ret);

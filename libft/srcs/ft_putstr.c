@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 14:53:43 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:36:55 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/20 09:57:10 by cmehay            #+#    #+#             */
+/*   Updated: 2013/11/20 09:59:15 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putstr(char const *s)
 {
-	ft_putstr_fd(s, STDOUT_FILENO);
+	ft_putstr_fd(s, 1);
 }

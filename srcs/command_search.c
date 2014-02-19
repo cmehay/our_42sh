@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_search.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 15:05:34 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:48:03 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static char	**ms_paths_get(t_env __UNUSED__ *env, char *cmd)
 
 	if ((path = ms_var_ptr_get(ms_context_get(), "PATH")))
 	{
-		paths = ft_strsplit(path->value, ':');
+		paths = cool_strsplit(path->value, ':');
 		if (paths == NULL)
-			return ((char **) ms_function_failed("malloc failed", NULL));
+			return ((char **) ms_function_failed("cool_malloc failed", NULL));
 		return (paths);
 	}
 	ms_command_not_found(cmd);
@@ -67,8 +67,8 @@ static void	ms_command_paths_clean(char **paths)
 
 	i = 0;
 	while (paths[i])
-		free(paths[i++]);
-	free(paths);
+		cool_free(paths[i++]);
+	cool_free(paths);
 }
 
 char		*ms_command_search(t_context *context, char *cmd)
@@ -78,7 +78,7 @@ char		*ms_command_search(t_context *context, char *cmd)
 	char	*exe;
 
 	if (!access(cmd, F_OK | X_OK))
-		return (ft_strdup(cmd));
+		return (cool_strdup(cmd));
 	if ((paths = ms_paths_get(context->env, cmd)) == NULL)
 		return (NULL);
 	i = 0;
@@ -90,7 +90,7 @@ char		*ms_command_search(t_context *context, char *cmd)
 			ms_command_paths_clean(paths);
 			return (exe);
 		}
-		free(exe);
+		cool_free(exe);
 	}
 	ms_command_paths_clean(paths);
 	ms_command_not_found(cmd);

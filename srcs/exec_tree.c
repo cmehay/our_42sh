@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/26 23:10:34 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:57:52 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ms_exec_processes_wait(t_context *context)
 	{
 		next = proc->next;
 		waitpid(proc->pid, &status, 0);
-		free(proc);
+		cool_free(proc);
 		proc = next;
 		ret = (status) ? -1 : 0;
 	}

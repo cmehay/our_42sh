@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 11:50:40 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:37:00 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/22 14:44:59 by cmehay            #+#    #+#             */
+/*   Updated: 2013/11/22 15:50:26 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	return (ft_memchr(s, c, ft_strlen(s) + 1));
+	size_t	i;
+
+	i = ft_strlen(s);
+	return (ft_memchr(s, (char) c, i + 1));
 }

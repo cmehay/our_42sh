@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_lexer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/29 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/24 19:46:46 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:46:32 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ms_lexer_token_get_next(char **cmd, char **token, t_ttype *type)
 		ret = ms_lexer_handle_normal(&start, &end, &ptr, type);
 	if (ret < 0)
 		return (-1);
-	*token = ft_strsub(start, 0, (ptr - start));
+	*token = cool_strsub(start, 0, (ptr - start));
 	if (!*token)
 		return (-1);
 	*cmd = end;

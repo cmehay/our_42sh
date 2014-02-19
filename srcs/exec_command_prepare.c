@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_command_prepare.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/17 18:34:08 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/18 22:56:37 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ static void	ms_exec_reader_child(t_command *cmd)
 	l_str = NULL;
 	close(cmd->fdin.pipe[PIPE_READ]);
 	fd = cmd->fdin.pipe[PIPE_WRITE];
-	while (ft_gnl(STDIN_FILENO, &line) > 0)
+	while (cool_next_line(STDIN_FILENO, &line) > 0)
 	{
 		if (ft_strcmp(line, cmd->fdin.filename) == 0)
 		{
 			ms_str_lstdel(&l_str, fd);
-			free(line);
+			cool_free(line);
 			break ;
 		}
 		l_str = ms_str_lstadd(line, &l_str);
 		//ft_putendl_fd(line, fd);
-		free(line);
+		cool_free(line);
 	}
 	exit(EXIT_SUCCESS);
 }

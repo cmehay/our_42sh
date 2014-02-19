@@ -3,40 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 11:51:07 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:35:39 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/21 07:17:18 by cmehay            #+#    #+#             */
+/*   Updated: 2013/12/18 20:47:16 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+static char	*atoi_shift(char *s)
 {
-	int	nbr;
-	int	sign;
-	int	i;
+	while ((*s > 8 && *s < 14) || *s == 32)
+		s++;
+	return (s);
+}
 
-	sign = 1;
+int			ft_atoi(const char *str)
+{
+	char	*shift;
+	size_t	i;
+	int		mul;
+	int		rtn;
+	int		neg;
+
+	shift = atoi_shift((char*) str);
 	i = 0;
-	while (str[i] <= 33 || str[i] >= 126)
+	mul = 1;
+	rtn = 0;
+	neg = 1 - ((shift[i] == '-') * 2);
+	if (shift[i] == '-' || shift[i] == '+')
 		i++;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i + 1] >= '0' && str[i + 1] <= '9')
-		{
-			if (str[i] == '-')
-				sign = -1;
-			i++;
-		}
-	if (!(str[i] >= '0' && str[i] <= '9'))
-		return (0);
-	nbr = (int) str[i] - '0';
-	i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (ft_isdigit(shift[i]))
+		i++;
+	while (i > (shift[0] == '-' || shift[0] == '+'))
 	{
-		nbr = nbr * 10 + ((int) str[i] - '0');
-		i++;
+		rtn += (shift[i-- - 1] - 0x30) * mul;
+		mul *= 10;
 	}
-	return (sign * nbr);
+	return (rtn * neg);
 }

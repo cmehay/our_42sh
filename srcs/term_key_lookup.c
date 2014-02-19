@@ -15,67 +15,67 @@
 static t_key_func_assoc	func_assoc[17] =
 {
 	{
-		KEY_ARROW_UP,
+		KEY_IS_ARROW_UP,
 		ms_key_is_arrow_up
 	},
 	{
-		KEY_ARROW_DOWN,
+		KEY_IS_ARROW_DOWN,
 		ms_key_is_arrow_down
 	},
 	{
-		KEY_ARROW_RIGHT,
+		KEY_IS_ARROW_RIGHT,
 		ms_key_is_arrow_right
 	},
 	{
-		KEY_ARROW_LEFT,
+		KEY_IS_ARROW_LEFT,
 		ms_key_is_arrow_left
 	},
 	{
-		KEY_SHIFT_ARROW_UP,
+		KEY_IS_SHIFT_ARROW_UP,
 		ms_key_is_shift_arrow_up
 	},
 	{
-		KEY_SHIFT_ARROW_DOWN,
+		KEY_IS_SHIFT_ARROW_DOWN,
 		ms_key_is_shift_arrow_down
 	},
 	{
-		KEY_SHIFT_ARROW_RIGHT,
+		KEY_IS_SHIFT_ARROW_RIGHT,
 		ms_key_is_shift_arrow_right
 	},
 	{
-		KEY_SHIFT_ARROW_LEFT,
+		KEY_IS_SHIFT_ARROW_LEFT,
 		ms_key_is_shift_arrow_left
 	},
 	{
-		KEY_HOME,
+		KEY_IS_HOME,
 		ms_key_is_home
 	},
 	{
-		KEY_END,
+		KEY_IS_END,
 		ms_key_is_end
 	},
 	{
-		KEY_CTRL_X,
+		KEY_IS_CTRL_X,
 		ms_key_is_ctrl_x
 	},
 	{
-		KEY_CTRL_Y,
+		KEY_IS_CTRL_Y,
 		ms_key_is_ctrl_y
 	},
 	{
-		KEY_CTRL_P,
+		KEY_IS_CTRL_P,
 		ms_key_is_ctrl_p
 	},
 	{
-		KEY_CTRL_V,
+		KEY_IS_CTRL_V,
 		ms_key_is_ctrl_v
 	},
 	{
-		KEY_CTRL_D,
+		KEY_IS_CTRL_D,
 		ms_key_is_ctrl_d
 	},
 	{
-		KEY_BACKSPACE,
+		KEY_IS_BACKSPACE,
 		ms_key_is_backspace
 	},
 	{

@@ -3,32 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 14:23:00 by sbethoua          #+#    #+#             */
-/*   Updated: 2013/12/01 19:37:23 by sbethoua         ###   ########.fr       */
+/*   Created: 2013/11/22 15:25:44 by cmehay            #+#    #+#             */
+/*   Updated: 2014/02/11 12:02:12 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {
+	char	*rtn;
 	size_t	i;
-	size_t	len;
-	char	*str;
 
-	len = ft_strlen(s);
-	str = (char *) malloc(sizeof(char) * (len + 1));
-	if (str == NULL)
-		return (NULL);
 	i = 0;
-	while (i < len)
+	if ((rtn = ft_strnew(ft_strlen(s))) != NULL)
 	{
-		str[i] = f(s[i]);
-		i++;
+		while (s[i] != 0)
+		{
+			rtn[i] = f(s[i]);
+			i++;
+		}
 	}
-	str[i] = '\0';
-	return (str);
+	return (rtn);
+}
+
+char	*cool_strmap(char const *s, char (*f)(char))
+{
+	char	*rtn;
+	size_t	i;
+
+	i = 0;
+	if ((rtn = cool_strnew(ft_strlen(s))) != NULL)
+	{
+		while (s[i] != 0)
+		{
+			rtn[i] = f(s[i]);
+			i++;
+		}
+	}
+	return (rtn);
 }

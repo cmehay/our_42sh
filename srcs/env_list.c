@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 17:19:07 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/26 23:37:21 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:48:22 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_env	*ms_env_lstadd(t_context *context, char *var)
 	t_env	*elem;
 	t_env	*current;
 
-	if ((elem = (t_env *) malloc(sizeof(t_env))) == NULL)
-		return ((t_env *) ms_function_failed("malloc failed", NULL));
+	if ((elem = (t_env *) cool_malloc(sizeof(t_env))) == NULL)
+		return ((t_env *) ms_function_failed("cool_malloc failed", NULL));
 	elem->name = ms_var_name_get(var);
 	elem->value = ms_var_value_get(var);
 	if (elem->name == NULL || elem->value == NULL)
@@ -52,9 +52,9 @@ void	ms_env_lstdelone(t_env **current)
 			(*current)->prev->next = next;
 		if ((*current)->next)
 			(*current)->next->prev = prev;
-		free((*current)->name);
-		free((*current)->value);
-		free(*current);
+		cool_free((*current)->name);
+		cool_free((*current)->value);
+		cool_free(*current);
 		*current = next;
 	}
 }
@@ -68,9 +68,9 @@ void	ms_env_lstdel(t_context *context)
 	while (current)
 	{
 		next = current->next;
-		free(current->name);
-		free(current->value);
-		free(current);
+		cool_free(current->name);
+		cool_free(current->value);
+		cool_free(current);
 		current = next;
 	}
 	current = NULL;

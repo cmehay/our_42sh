@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_setenv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbethoua <sbethoua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 18:06:04 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/01/29 19:21:56 by sbethoua         ###   ########.fr       */
+/*   Updated: 2014/02/18 22:43:41 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static int	ms_setenv_exec_env(t_context *context, char **argv, int outfd)
 
 static void	ms_setenv_exists(t_env **var, char *value, char **name)
 {
-	free((*var)->value);
+	cool_free((*var)->value);
 	(*var)->value = value;
-	free(*name);
+	cool_free(*name);
 }
 
 int			ms_builtin_setenv(t_context *context, char **argv,
@@ -55,8 +55,8 @@ int			ms_builtin_setenv(t_context *context, char **argv,
 			continue ;
 		}
 		var = ms_env_lstadd(context, argv[i++]);
-		free(name);
-		free(value);
+		cool_free(name);
+		cool_free(value);
 	}
 	return (0);
 }
