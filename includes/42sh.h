@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 17:56:08 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/19 17:17:36 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,7 @@ int			ms_builtin_unsetenv(t_context *context, char **argv, int outfd);
 int			ms_builtin_exit(t_context *context, char **argv, int outfd);
 int			ms_builtin_echo(char **argv);
 int			ms_builtin_history(t_context *ctx);
+int			ms_builtin_point(t_context *context, t_cmd_char **cmd_char);
 
 void		ms_signal_catch(void);
 
