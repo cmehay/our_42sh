@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:24:20 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/19 17:51:45 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/22 17:47:03 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ int			ms_key_is_arrow_up(t_context *ctx, t_cmd_char **cmd_char)
 		ms_keep_memory(*cmd_char, 1);
 	if (ctx->history->next)
 		ctx->history = ctx->history->next;
-	tputs(tgetstr("rc", NULL), 0, ms_putchar);
-	tputs(tgetstr("cd", NULL), 0, ms_putchar);
 	current = ctx->history;
 	curr_char = current->cmd_char;
 	if (*cmd_char)
@@ -76,6 +74,5 @@ int			ms_key_is_arrow_up(t_context *ctx, t_cmd_char **cmd_char)
 		*cmd_char = ms_cmd_char_lstadd(*cmd_char, curr_char->character);
 		curr_char = curr_char->next;
 	}
-	ms_cmd_char_display(ctx->history->cmd_char);
 	return (0);
 }

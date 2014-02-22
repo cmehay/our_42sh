@@ -6,7 +6,7 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/19 17:55:45 by dcouly           ###   ########.fr        #
+#    Updated: 2014/02/21 15:24:42 by dcouly           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRCSFILES = 42sh.c \
 			exec_tree.c \
 			exec_pipe.c \
 			command_parser.c \
+			command_print.c \
 			builtin_cd.c \
 			builtin_cd_pwd_modify.c \
 			builtin_env.c \

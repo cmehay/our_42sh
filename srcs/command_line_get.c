@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/19 17:52:05 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/22 17:46:16 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,16 @@ int			ms_command_line_get(t_context *ctx, int fd, char **cmd_line)
 		key = 0;
 		if (read(fd, &key, 6) == -1)
 			return (ms_ctrl_c_catched(ctx));
-		ms_key_lookup(ctx, key, &cmd_char);
 		if (key == KEY_IS_RETURN)
 			return (ms_key_is_return(ctx, cmd_line, &cmd_char));
+		ms_clean_line(&cmd_char, ms_prompt_len(ctx), key);
+		ms_key_lookup(ctx, key, &cmd_char);
 		if (ft_isprint(key))
 		{
 			if ((cmd_char = ms_cmd_char_lstadd(cmd_char, key)) == NULL)
 				return (ms_err_ret("cool_malloc failed", -1));
-			tputs(tgetstr("im", NULL), 0, ms_putchar);
-			ft_putchar(key);
-			tputs(tgetstr("ei", NULL), 0, ms_putchar);
 		}
+		ms_print_line(&cmd_char);
 	}
 	return (-1);
 }

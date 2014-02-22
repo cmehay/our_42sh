@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/19 17:51:26 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/21 18:12:47 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,9 @@ char		*ms_var_name_get(char *var);
 char		*ms_var_value_get(char *var);
 t_env		*ms_var_ptr_get(t_context *context, char *name);
 
+int			ms_propmt_len(t_context *context);
 void		ms_prompt_run(t_context *context);
+int			ms_prompt_len(t_context *context);
 t_node		*ms_command_parse(t_context *context);
 
 int			ms_builtins_search_exec(t_context *context, char **argv, int outfd);
@@ -322,5 +324,8 @@ int			ms_key_is_ctrl_v(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_ctrl_d(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_backspace(t_context *ctx, t_cmd_char **cmd_char);
 int			ms_key_is_return(t_context *ctx, char **cmd, t_cmd_char **cmd_char);
+
+void		ms_print_line(t_cmd_char **cmd_char);
+void		ms_clean_line(t_cmd_char **cmd_char, int len, uint64_t nb);
 
 #endif /* !SH_H */

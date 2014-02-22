@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:24:20 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:58:44 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/22 15:47:30 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ms_key_is_arrow_left(t_context *ctx, t_cmd_char **cmd_char)
 	current = ms_get_cursor_position(cmd_char);
 	if (current->prev)
 	{
-		tputs(cap->str_cursor_left, STDIN_FILENO, ms_putchar);
 		current->cursor = _FALSE;
 		current->prev->cursor = _TRUE;
 	}
