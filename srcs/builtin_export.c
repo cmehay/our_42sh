@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/24 21:49:33 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/25 01:59:17 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 03:03:46 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ int		ms_builtin_export(t_context *context, char **argv, int __UNUSED__ outfd)
 	char	*tmp2;
 	char	*var;
 
-	if ((var = find_local_var(argv[1]))
+	if ((var = find_local_var(argv[1])))
 	{
-		tmp = cool_strjoin(argv[1], '=');
+		tmp = cool_strjoin(argv[1], "=");
 		tmp2 = cool_strjoin(tmp, var);
 		rm_local_var(argv[1]);
 		cool_free(argv[1]);

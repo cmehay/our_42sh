@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 01:33:05 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/25 02:49:44 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 03:04:28 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char		*looking_for_vars(char *str, t_context *context)
 	rtn = str;
 	if (!str)
 		return (NULL);
-	var_split = cool_strsplit(str, "$");
+	var_split = cool_strsplit(str, '$');
 	if (var_split[0] && var_split[1])
 	{
 		i = 0;

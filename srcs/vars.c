@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/24 20:35:52 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/25 02:54:36 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 03:05:11 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			rm_local_var(char *name)
 	t_vars	*lst;
 	t_vars	*to_free;
 
-	lst = gimme_vars;
+	lst = gimme_vars();
 	while (lst->next)
 	{
 		if (lst->next->name && ft_strequ(name, lst->next->name))
@@ -57,7 +57,7 @@ void			add_local_var(char *name, char *content)
 {
 	t_vars	*lst;
 
-	lst = gimme_vars;
+	lst = gimme_vars();
 	while (lst)
 	{
 		if (lst->name && ft_strequ(name, lst->name))
@@ -78,7 +78,7 @@ char			*find_local_var(char *name)
 {
 	t_vars	*lst;
 
-	lst = gimme_vars;
+	lst = gimme_vars();
 	while (lst)
 	{
 		if (lst->name && ft_strequ(name, lst->name))

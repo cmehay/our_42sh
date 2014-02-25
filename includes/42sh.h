@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/25 02:56:29 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 03:02:30 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ typedef struct	s_command
 	t_cmdio	fdout;
 }				t_command;
 
-typedef struct s_vars	t_vars
+typedef struct s_vars	t_vars;
 
 struct s_vars
 {
@@ -228,6 +228,8 @@ int			ms_prompt_len(t_context *context);
 t_node		*ms_command_parse(t_context *context);
 
 int			ms_builtins_search_exec(t_context *context, char **argv, int outfd);
+int			ms_builtins_search_exec2(t_context *context, char **argv,
+		int outfd);
 char		*ms_command_search(t_context *context, char *cmd);
 
 int			ms_builtin_cd(t_context *context, char **argv, int outfd);
