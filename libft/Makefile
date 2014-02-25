@@ -6,7 +6,7 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 17:18:15 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/18 16:45:07 by cmehay           ###   ########.fr        #
+#    Updated: 2014/02/25 01:29:51 by cmehay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,8 @@ SRCSFILES = ft_memset.c \
 			cool_itoa.c \
 			cool_next_line.c \
 			ft_arraydel.c \
-			ft_strtest.c
+			ft_strtest.c \
+			ft_strrep.c
 
 OBJS = $(SRCS:.c=.o)
 

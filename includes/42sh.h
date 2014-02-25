@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/21 18:12:47 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/24 20:46:18 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,15 @@ typedef struct	s_command
 	t_cmdio	fdin;
 	t_cmdio	fdout;
 }				t_command;
+
+typedef struct s_vars	t_vars
+
+struct s_vars
+{
+	char	*name;
+	char	*content;
+	t_vars	*next;
+};
 
 t_context	*ms_context_get(void);
 void		ms_context_init(t_context *context);
