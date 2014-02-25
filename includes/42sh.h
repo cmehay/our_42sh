@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/25 03:18:27 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 18:18:03 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -342,7 +342,7 @@ void		rm_local_var(char *name);
 void		add_local_var(char *name, char *content);
 char		*find_local_var(char *name);
 
-char		*looking_for_vars(char *str, t_context *context);
+void		looking_for_vars_in_array(char **array, t_context *context);
 
 int			ms_builtin_export(t_context *context, char **argv,
 		int __UNUSED__ outfd);

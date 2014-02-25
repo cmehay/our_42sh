@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 01:33:05 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/25 03:22:45 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 20:38:39 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*replace_vars(char *str, char *varname, t_context *context)
 	return (rtn);
 }
 
-char		*looking_for_vars(char *str, t_context *context)
+static char	*looking_for_vars(char *str, t_context *context)
 {
 	char	**var_split;
 	char	*rtn;
@@ -38,9 +38,9 @@ char		*looking_for_vars(char *str, t_context *context)
 	if (!str)
 		return (NULL);
 	var_split = cool_strsplit(str, '$');
-	if (var_split[0] && var_split[1])
+	i = (*str == '$') ? -1 : 0;
+	if (var_split[0] && var_split[i + 1])
 	{
-		i = 0;
 		while (var_split[++i])
 		{
 			j = -1;
@@ -54,4 +54,13 @@ char		*looking_for_vars(char *str, t_context *context)
 	}
 	cool_arraydel(var_split);
 	return (rtn);
+}
+
+void		looking_for_vars_in_array(char **array, t_context *context)
+{
+	while (array && *array)
+	{
+		*array = looking_for_vars(*array, context);
+		array++;
+	}
 }
