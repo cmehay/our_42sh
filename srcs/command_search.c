@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/24 23:15:47 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 03:17:27 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ int			ms_builtins_search_exec2(t_context *context, char **argv, int outfd)
 	if (ft_strcmp("export", argv[0]) == 0)
 	{
 		ms_builtin_export(context, argv, outfd);
+		return (0);
+	}
+	if (ft_strcmp("unset", argv[0]) == 0)
+	{
+		ms_builtin_unset(context, argv, outfd);
 		return (0);
 	}
 	return (-1);

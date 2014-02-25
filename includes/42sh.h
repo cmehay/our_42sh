@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/25 03:02:30 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 03:18:27 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,5 +352,7 @@ char		*find_var(char *var, t_context *context);
 t_bool		is_a_var(char *str);
 t_bool		is_a_var_set(char *str);
 
+int			ms_builtin_unset(t_context *context, char **argv,
+		int __UNUSED__ outfd);
 
 #endif /* !SH_H */

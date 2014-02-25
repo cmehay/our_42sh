@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 01:33:05 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/25 03:04:28 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 03:22:45 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*replace_vars(char *str, char *varname, t_context *context)
 	char	*rtn;
 
 	if (!(var_content = find_var(varname, context)))
-		return (str);
+		var_content = "";
 	var_name = cool_strjoin("$", varname);
 	rtn = ft_strrep(var_name, var_content, str);
 	cool_free(str);
