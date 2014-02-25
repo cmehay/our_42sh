@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/24 20:46:18 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 02:56:29 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,5 +336,19 @@ int			ms_key_is_return(t_context *ctx, char **cmd, t_cmd_char **cmd_char);
 
 void		ms_print_line(t_cmd_char **cmd_char);
 void		ms_clean_line(t_cmd_char **cmd_char, int len, uint64_t nb);
+void		rm_local_var(char *name);
+void		add_local_var(char *name, char *content);
+char		*find_local_var(char *name);
+
+char		*looking_for_vars(char *str, t_context *context);
+
+int			ms_builtin_export(t_context *context, char **argv,
+		int __UNUSED__ outfd);
+int			ms_builtin_setvar(t_context *context, char **argv,
+		int __UNUSED__ outfd);
+char		*find_var(char *var, t_context *context);
+t_bool		is_a_var(char *str);
+t_bool		is_a_var_set(char *str);
+
 
 #endif /* !SH_H */

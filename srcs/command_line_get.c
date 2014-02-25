@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/22 17:46:16 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/25 02:33:01 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int			ms_command_line_get(t_context *ctx, int fd, char **cmd_line)
 	uint64_t	key;
 	t_cmd_char	*cmd_char;
 
-	cmd_char = NULL;
 	tputs(tgetstr("sc", NULL), 0, ms_putchar);
 	if (tgetflag("am") == -1 || tgetflag("bw") == -1)
 		ft_putstr("error");

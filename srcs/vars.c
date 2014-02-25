@@ -6,14 +6,14 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/24 20:35:52 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/25 01:39:33 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 02:54:36 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 #include "stdlib.h"
 
-t_vars	*gimme_vars(void)
+static t_vars	*gimme_vars(void)
 {
 	static t_vars	*lst = NULL;
 
@@ -22,7 +22,7 @@ t_vars	*gimme_vars(void)
 	return (lst);
 }
 
-t_vars	*new_var(char *name, char *content)
+static t_vars	*new_var(char *name, char *content)
 {
 	t_vars	*rtn;
 
@@ -32,7 +32,7 @@ t_vars	*new_var(char *name, char *content)
 	return (rtn);
 }
 
-void	rm_local_var(char *name)
+void			rm_local_var(char *name)
 {
 	t_vars	*lst;
 	t_vars	*to_free;
@@ -53,7 +53,7 @@ void	rm_local_var(char *name)
 	}
 }
 
-void	add_local_var(char *name, char *content)
+void			add_local_var(char *name, char *content)
 {
 	t_vars	*lst;
 
@@ -74,7 +74,7 @@ void	add_local_var(char *name, char *content)
 	lst->next = new_var(name, content);
 }
 
-char	*find_local_var(char *name)
+char			*find_local_var(char *name)
 {
 	t_vars	*lst;
 
