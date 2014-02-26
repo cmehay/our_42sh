@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/25 03:17:27 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/26 11:07:01 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			ms_builtins_search_exec(t_context *context, char **argv, int outfd)
 	if (ft_strcmp("history", argv[0]) == 0)
 		return (ms_builtin_history(context));
 	if (ft_strcmp("echo", argv[0]) == 0)
-		return (ms_builtin_echo(argv));
+		return (ms_builtin_echo(context, argv, outfd));
 	if (ft_strcmp("setenv", argv[0]) == 0)
 	{
 		ms_builtin_setenv(context, argv, outfd);

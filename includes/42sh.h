@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/25 18:18:03 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/26 11:07:31 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,7 +238,8 @@ int			ms_builtin_env(t_context *context, char **argv, int outfd);
 int			ms_builtin_setenv(t_context *context, char **argv, int outfd);
 int			ms_builtin_unsetenv(t_context *context, char **argv, int outfd);
 int			ms_builtin_exit(t_context *context, char **argv, int outfd);
-int			ms_builtin_echo(char **argv);
+int			ms_builtin_echo(t_context __UNUSED__ *context, char **argv,
+		int outfd);
 int			ms_builtin_history(t_context *ctx);
 int			ms_builtin_point(t_context *context, t_cmd_char **cmd_char);
 
