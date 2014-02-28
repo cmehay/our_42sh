@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:57:52 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:07:40 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,41 @@
 
 int		ms_exec_processes_wait(t_context *context)
 {
-	t_process	*proc;
-	t_process	*next;
-	int			status;
-	int			ret;
+	t_jobs	*current;
+	int		status[1];
+	int		bg[1];
 
-	ret = 0;
-	proc = context->processes;
-	while (proc)
+	current = context->jobs;
+	while (current)
 	{
-		next = proc->next;
-		waitpid(proc->pid, &status, 0);
-		cool_free(proc);
-		proc = next;
-		ret = (status) ? -1 : 0;
+		if (current->state == FORGROUND)
+		{
+			while (current->state == FORGROUND)
+			{
+				if (waitpid(current->pid, status, WNOHANG | WUNTRACED))
+				{
+					if (WIFSTOPPED(status))
+						current->state = STOPPED;
+					else
+						current->state = -1;
+				}
+			}
+			tcsetpgrp(STDIN_FILENO, context->gid);
+		}
+		else if (current->state == BACKGROUND)
+		{
+			if (waitpid(current->pid, bg, WNOHANG | WUNTRACED))
+			{
+				if (WIFSTOPPED(bg))
+					current->state = STOPPED;
+				else
+					current->state = -1;
+			}
+		}
+		current = current->next;
 	}
-	context->processes = NULL;
-	return (ret);
+	status[0] = (status[0]) ? -1 : 0;
+	return (status[0]);
 }
 
 int		ms_exec_semicol(t_context *context, t_node *node)

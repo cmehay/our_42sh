@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:48:03 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/26 18:54:36 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,16 @@ int			ms_builtins_search_exec(t_context *context, char **argv, int outfd)
 		ms_builtin_cd(context, argv, outfd);
 		return (0);
 	}
+	if (ft_strcmp("bg", argv[0]) == 0)
+		return (ms_builtin_bg(context, argv, outfd));
+	if (ft_strcmp("fg", argv[0]) == 0)
+		return (ms_builtin_fg(context, argv, outfd));
+	if (ft_strcmp("stop", argv[0]) == 0)
+		return (ms_builtin_stop(context, argv, outfd));
 	if (ft_strcmp("history", argv[0]) == 0)
 		return (ms_builtin_history(context));
+	if (ft_strcmp("jobs", argv[0]) == 0)
+		return (ms_builtin_jobs(context, outfd));
 	if (ft_strcmp("echo", argv[0]) == 0)
 		return (ms_builtin_echo(argv));
 	if (ft_strcmp("setenv", argv[0]) == 0)
@@ -71,13 +79,33 @@ static void	ms_command_paths_clean(char **paths)
 	cool_free(paths);
 }
 
+static int	ms_is_a_path(char *cmd)
+{
+	int	cnt;
+	int	back_sl;
+
+	back_sl = 0;
+	cnt = 0;
+	while (cmd[cnt])
+	{
+		if (back_sl == 1)
+			back_sl = 0;
+		else if (cmd[cnt] == '\\')
+			back_sl = 1;
+		else if (cmd[cnt] == '/')
+			return (1);
+		cnt++;
+	}
+	return (0);
+}
+
 char		*ms_command_search(t_context *context, char *cmd)
 {
 	char	**paths;
 	size_t	i;
 	char	*exe;
 
-	if (!access(cmd, F_OK | X_OK))
+	if (ms_is_a_path(cmd) && !access(cmd, F_OK | X_OK))
 		return (cool_strdup(cmd));
 	if ((paths = ms_paths_get(context->env, cmd)) == NULL)
 		return (NULL);

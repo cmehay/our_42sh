@@ -6,7 +6,7 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/21 15:24:42 by dcouly           ###   ########.fr        #
+#    Updated: 2014/02/26 18:55:15 by dcouly           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCSFILES = 42sh.c \
 			context.c \
 			env_list.c \
 			str_list.c \
+			jobs_list.c \
 			var_name_value_get.c \
 			prompt.c \
 			term_mode.c \
@@ -76,6 +77,10 @@ SRCSFILES = 42sh.c \
 			builtin_unsetenv.c \
 			builtin_exit.c \
 			builtin_history.c \
+			builtin_jobs.c \
+			builtin_bg.c \
+			builtin_fg.c \
+			builtin_stop.c \
 			builtin_point_excl.c \
 			signals.c \
 			errors.c

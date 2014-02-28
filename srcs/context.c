@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:52:02 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:48:13 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/25 16:04:51 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_context	*ms_context_get(void)
 	if (context == NULL)
 	{
 		if ((context = (t_context *) cool_malloc(sizeof(t_context))) == NULL)
-			return ((t_context *) ms_function_failed("cool_malloc failed", NULL));
+			return ((t_context *)
+					ms_function_failed("cool_malloc failed", NULL));
 		return (context);
 	}
 	else
@@ -30,6 +31,9 @@ t_context	*ms_context_get(void)
 
 void		ms_context_init(t_context *context)
 {
+	context->gid = getpgid(0);
+	context->jobs = NULL;
+	context->nb_job = 0;
 	context->environ = NULL;
 	context->env = NULL;
 	context->processes = NULL;

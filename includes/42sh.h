@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/21 18:12:47 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:04:10 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,25 @@
 # define KEY_IS_CTRL_D 0x000000000004
 # define KEY_IS_BACKSPACE 0x00000000007f
 # define KEY_IS_RETURN 0x00000000000a
+# define STOPPED 0
+# define FORGROUND 1
+# define BACKGROUND 2
 
 typedef enum	e_bool
 {
 	_FALSE,
 	_TRUE
 }				t_bool;
+
+typedef struct	s_jobs
+{
+	char			*name;
+	int				num;
+	int				pid;
+	int				state;
+	struct s_jobs	*prev;
+	struct s_jobs	*next;
+}				t_jobs;
 
 typedef struct	s_env
 {
@@ -106,6 +119,12 @@ typedef struct	s_context
 	t_term		*term;
 	t_history	*history;
 	int			fd;
+	t_jobs		*jobs;
+	int			nb_job;
+	int			gid;
+	int			last_gid;
+	int			*fg;
+	int			num_fg;
 }				t_context;
 
 typedef struct	s_key_func_assoc
@@ -230,6 +249,9 @@ int			ms_builtin_exit(t_context *context, char **argv, int outfd);
 int			ms_builtin_echo(char **argv);
 int			ms_builtin_history(t_context *ctx);
 int			ms_builtin_point(t_context *context, t_cmd_char **cmd_char);
+int			ms_builtin_bg(t_context *context, char **argv, int outfd);
+int			ms_builtin_fg(t_context *context, char **argv, int outfd);
+int			ms_builtin_stop(t_context *context, char **argv, int outfd);
 
 void		ms_signal_catch(void);
 
@@ -327,5 +349,15 @@ int			ms_key_is_return(t_context *ctx, char **cmd, t_cmd_char **cmd_char);
 
 void		ms_print_line(t_cmd_char **cmd_char);
 void		ms_clean_line(t_cmd_char **cmd_char, int len, uint64_t nb);
+
+int			ms_builtin_jobs(t_context *context, int outfd);
+
+t_jobs		*ms_jobs_lstadd(t_context *context, char *var, int state, int pid);
+t_jobs		*ms_jobs_lstdelone(t_jobs **current);
+void		ms_jobs_lstdel(t_context *context);
+void		ms_jobs_add_cmd(char *name, t_context *ctx);
+void		ms_modif_jobs(t_context *ctx);
+
+void		ms_kill_all(t_context *context);
 
 #endif /* !SH_H */

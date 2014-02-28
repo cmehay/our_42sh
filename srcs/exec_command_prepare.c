@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:56:37 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/28 16:54:33 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	ms_exec_reader_child(t_command *cmd)
 			break ;
 		}
 		l_str = ms_str_lstadd(line, &l_str);
-		//ft_putendl_fd(line, fd);
 		cool_free(line);
 	}
 	exit(EXIT_SUCCESS);

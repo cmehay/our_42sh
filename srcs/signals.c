@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:10:27 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/22 18:13:10 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:07:44 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,41 @@ static void	ms_signal_exit(int __UNUSED__ sig)
 	exit(1);
 }
 
+static void	ms_signal_stp(int __UNUSED__ sig)
+{
+	t_context	*context;
+	int			pid;
+	t_jobs		*current;
+
+	pid = 0;
+	context = ms_context_get();
+	current = context->jobs;
+	while (current)
+	{
+		if (current->state == FORGROUND)
+		{
+			pid = current->pid;
+			current->state = STOPPED;
+			break ;
+		}
+		current = current->next;
+	}
+	if (pid)
+		kill(pid, SIGTSTP);
+}
+
+static void	ms_nothing(int __UNUSED__ sig)
+{
+	(void) sig;
+}
+
 void		ms_signal_catch(void)
 {
 	signal(SIGINT, ms_signal_killall);
 	signal(SIGWINCH, ms_signal_win_resize);
-	signal(SIGTSTP, SIG_IGN);
+	signal(SIGTSTP, ms_signal_stp);
 	signal(SIGCONT, SIG_IGN);
+	signal(SIGUSR1, ms_nothing);
 	signal(SIGQUIT, ms_signal_exit);
 	/*
 	signal(SIGSEGV, ms_signal_exit);
