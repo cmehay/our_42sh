@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:04:10 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:13:23 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,15 @@ typedef struct	s_command
 	t_cmdio	fdout;
 }				t_command;
 
+typedef struct s_vars	t_vars;
+
+struct s_vars
+{
+	char	*name;
+	char	*content;
+	t_vars	*next;
+};
+
 t_context	*ms_context_get(void);
 void		ms_context_init(t_context *context);
 t_context	*ms_context_fill(t_context *context, char **environ);
@@ -238,6 +247,8 @@ int			ms_prompt_len(t_context *context);
 t_node		*ms_command_parse(t_context *context);
 
 int			ms_builtins_search_exec(t_context *context, char **argv, int outfd);
+int			ms_builtins_search_exec2(t_context *context, char **argv,
+		int outfd);
 char		*ms_command_search(t_context *context, char *cmd);
 
 int			ms_builtin_cd(t_context *context, char **argv, int outfd);
@@ -246,7 +257,8 @@ int			ms_builtin_env(t_context *context, char **argv, int outfd);
 int			ms_builtin_setenv(t_context *context, char **argv, int outfd);
 int			ms_builtin_unsetenv(t_context *context, char **argv, int outfd);
 int			ms_builtin_exit(t_context *context, char **argv, int outfd);
-int			ms_builtin_echo(char **argv);
+int			ms_builtin_echo(t_context __UNUSED__ *context, char **argv,
+		int outfd);
 int			ms_builtin_history(t_context *ctx);
 int			ms_builtin_point(t_context *context, t_cmd_char **cmd_char);
 int			ms_builtin_bg(t_context *context, char **argv, int outfd);
@@ -349,6 +361,22 @@ int			ms_key_is_return(t_context *ctx, char **cmd, t_cmd_char **cmd_char);
 
 void		ms_print_line(t_cmd_char **cmd_char);
 void		ms_clean_line(t_cmd_char **cmd_char, int len, uint64_t nb);
+void		rm_local_var(char *name);
+void		add_local_var(char *name, char *content);
+char		*find_local_var(char *name);
+
+void		looking_for_vars_in_array(char **array, t_context *context);
+
+int			ms_builtin_export(t_context *context, char **argv,
+		int __UNUSED__ outfd);
+int			ms_builtin_setvar(t_context *context, char **argv,
+		int __UNUSED__ outfd);
+char		*find_var(char *var, t_context *context);
+t_bool		is_a_var(char *str);
+t_bool		is_a_var_set(char *str);
+
+int			ms_builtin_unset(t_context *context, char **argv,
+		int __UNUSED__ outfd);
 
 int			ms_builtin_jobs(t_context *context, int outfd);
 

@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/26 18:54:36 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:12:56 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			ms_builtins_search_exec(t_context *context, char **argv, int outfd)
 	if (ft_strcmp("jobs", argv[0]) == 0)
 		return (ms_builtin_jobs(context, outfd));
 	if (ft_strcmp("echo", argv[0]) == 0)
-		return (ms_builtin_echo(argv));
+		return (ms_builtin_echo(context, argv, outfd));
 	if (ft_strcmp("setenv", argv[0]) == 0)
 	{
 		ms_builtin_setenv(context, argv, outfd);
@@ -59,6 +59,11 @@ int			ms_builtins_search_exec(t_context *context, char **argv, int outfd)
 		ms_builtin_unsetenv(context, argv, outfd);
 		return (0);
 	}
+	return (ms_builtins_search_exec2(context, argv, outfd));
+}
+
+int			ms_builtins_search_exec2(t_context *context, char **argv, int outfd)
+{
 	if (ft_strcmp("env", argv[0]) == 0)
 	{
 		ms_builtin_env(context, argv, outfd);
@@ -66,6 +71,21 @@ int			ms_builtins_search_exec(t_context *context, char **argv, int outfd)
 	}
 	if (ft_strcmp("exit", argv[0]) == 0)
 		ms_builtin_exit(context, argv, outfd);
+	if (is_a_var_set(argv[0]))
+	{
+		ms_builtin_setvar(context, argv, outfd);
+		return (0);
+	}
+	if (ft_strcmp("export", argv[0]) == 0)
+	{
+		ms_builtin_export(context, argv, outfd);
+		return (0);
+	}
+	if (ft_strcmp("unset", argv[0]) == 0)
+	{
+		ms_builtin_unset(context, argv, outfd);
+		return (0);
+	}
 	return (-1);
 }
 

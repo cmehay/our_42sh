@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/27 17:50:24 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:13:10 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,10 @@ int			ms_command_line_get(t_context *ctx, int fd, char **cmd_line)
 	uint64_t	key;
 	t_cmd_char	*cmd_char;
 
-	cmd_char = NULL;
 	tputs(tgetstr("sc", NULL), 0, ms_putchar);
 	if (tgetflag("am") == -1 || tgetflag("bw") == -1)
 		ft_putstr("error");
-	if ((cmd_char = ms_cmd_char_lstadd(cmd_char, '\0')) == NULL)
+	if ((cmd_char = ms_cmd_char_lstadd(NULL, '\0')) == NULL)
 		return (ms_err_ret("cool_malloc failed", -1));
 	while (1)
 	{

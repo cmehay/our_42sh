@@ -6,7 +6,7 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/26 18:55:15 by dcouly           ###   ########.fr        #
+#    Updated: 2014/02/28 18:13:31 by dcouly           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,8 +82,12 @@ SRCSFILES = 42sh.c \
 			builtin_fg.c \
 			builtin_stop.c \
 			builtin_point_excl.c \
+			builtin_export.c \
 			signals.c \
-			errors.c
+			errors.c \
+			vars.c \
+			vars_lookup.c \
+			builtin_unset.c
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
 
