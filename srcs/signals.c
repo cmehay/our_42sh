@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:10:27 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:07:44 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:47:03 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,29 @@
 #include <termcap.h>
 #include <termios.h>
 
-static void	ms_signal_killall(int sig)
+static void	ms_signal_killall(int __UNUSED__ sig)
 {
 	t_context	*context;
-	t_process	*proc;
+	t_jobs		*job;
 
 	context = ms_context_get();
-	proc = context->processes;
-	if (proc == NULL)
+	job = context->jobs;
+	if (job == NULL)
 	{
 		context->fd = dup(STDIN_FILENO);
 		close(STDIN_FILENO);
 	}
 	else
 	{
-		while (proc)
+		while (job)
 		{
-			kill(proc->pid, sig);
-			proc = proc->next;
+			if (job->state != FORGROUND)
+				job = job->next;
+			else
+				break ;
 		}
+		if (job)
+			kill(job->pid, SIGINT);
 		ft_putchar('\n');
 	}
 }

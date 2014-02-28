@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 18:59:00 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 23:03:21 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/02/28 19:04:47 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void		ms_term_mode_raw(t_term *term)
 	tgetent(NULL, getenv("TERM"));
 	tcgetattr(STDIN_FILENO, &attr);
 	attr.c_lflag &= ~(ECHO | ICANON);
-	attr.c_oflag &= ~(OPOST);
 	attr.c_cc[VMIN] = 1;
 	attr.c_cc[VTIME] = 0;
 	tcsetattr(STDIN_FILENO, TCSADRAIN, &attr);
