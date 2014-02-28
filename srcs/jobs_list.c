@@ -6,7 +6,7 @@
 /*   By: dcouly <dcouly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/24 15:51:38 by dcouly            #+#    #+#             */
-/*   Updated: 2014/02/28 17:05:34 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:35:39 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void	ms_modif_jobs(t_context *ctx)
 				(current->prev)->next = current->next;
 			if (current->next == NULL && current->prev == NULL)
 				ctx->jobs = NULL;
+			else if (current->prev == NULL)
+				ctx->jobs = ctx->jobs->next;
 			cool_free(current->name);
 			mem = current;
 			current = current->next;

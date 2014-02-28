@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:24:20 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:12:19 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:35:00 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ static int	*ms_is_fg_comm(t_cmd_char **cmd_char)
 int			ms_key_is_return(t_context *ctx,
 		char **cmd_line, t_cmd_char **cmd_char)
 {
+	ms_exec_processes_wait(ctx);
 	ms_modif_jobs(ctx);
 	while (ctx->history && ctx->history->prev)
 		ctx->history = ctx->history->prev;

@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:07:40 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/02/28 18:29:18 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ int		ms_exec_processes_wait(t_context *context)
 					current->state = STOPPED;
 				else
 					current->state = -1;
+			}
+		}
+		else if (current->state == STOPPED)
+		{
+			if (waitpid(current->pid, bg, WNOHANG))
+			{
+				current->state = -1;
 			}
 		}
 		current = current->next;
