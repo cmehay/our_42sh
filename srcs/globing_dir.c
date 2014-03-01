@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 18:30:11 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/01 18:37:35 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/01 19:44:08 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 char	*find_match(char *dir, char *pattern)
 {
+	struct dirent	*dirent;
+	DIR				*dir;
+
 	
 }

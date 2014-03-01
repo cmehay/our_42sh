@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 00:19:13 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/01 19:33:16 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/01 19:44:07 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ t_bool		matching(char *pattern, char *lookup)
 	if (*pattern == '*')
 		return (matching(pattern + 1, lookup) || matching(pattern, lookup + 1));
 	return (_FALSE);
+}
+
+static char	*find_pattern_dir(char **split, )
+{
+
 }
 
 char		*looking_for_match(char *str)
