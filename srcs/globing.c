@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 00:19:13 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/01 16:23:33 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/01 16:33:59 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*sanityze(char *str)
 	rtn = str;
 	while (str && *str)
 	{
-		*str = (*str == '\t') ? ' ' ? *str;
+		*str = (*str == '\t' || *str == '\n' ) ? ' ' ? *str;
 		str++;
 	}
 	return (rtn);
