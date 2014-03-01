@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/21 17:00:03 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:42:31 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/01 17:41:28 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int			ms_builtin_cd(t_context *context, char **argv, int __UNUSED__ outfd)
 		else
 		{
 			ret = ms_cd_full_path(argv);
-			if (ret != 0 && ret == 1)
+			if (ret == 1)
 				ret = ms_cd_path(context, argv);
 		}
 	}
