@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:13:23 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/02 01:30:42 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,6 +222,17 @@ struct s_vars
 	char	*name;
 	char	*content;
 	t_vars	*next;
+};
+
+typedef struct s_glob	t_glob;
+
+struct s_glob
+{
+	char	*file;
+	char	*path;
+	int		len;
+	int		match;
+	t_glob	*next;
 };
 
 t_context	*ms_context_get(void);

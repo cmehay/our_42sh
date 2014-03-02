@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 00:19:13 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/01 19:44:07 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/02 01:26:20 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,19 @@ t_bool		matching(char *pattern, char *lookup)
 	return (_FALSE);
 }
 
-static char	*find_pattern_dir(char **split, )
+static char	*find_pattern_dir(char **split, char *str)
 {
+	char	*dir;
+	char	*tmp;
 
+	tmp = cool_strmerge(split);
+	if (*str == '/')
+		dir = (tmp) ? cool_strjoin("/", tmp) : cool_strdup("/");
+	else
+		dir = (tmp) ? cool_strjoin("./", tmp) : cool_strdup("./");
+	cool_free(tmp);
+	cool_arraydel(split);
+	return (dir);
 }
 
 char		*looking_for_match(char *str)
@@ -48,11 +58,11 @@ char		*looking_for_match(char *str)
 	char	**split;
 	char	**bak;
 	char	*dir;
-	char	*tmp;
 	char	*pattern;
 
 	split = cool_strsplit(str, '/');
 	bak = split;
+	pattern = NULL;
 	while (split && *split)
 	{
 		if (!*(split + 1))
@@ -62,14 +72,28 @@ char		*looking_for_match(char *str)
 		}
 		split++;
 	}
-	tmp = cool_strmerge(bak);
-	if (*str == '/')
-		dir = (tmp) ? cool_strjoin("/", tmp) : cool_strdup("/");
-	else
-		dir = (tmp) ? cool_strjoin("./", tmp) : cool_strdup("./");
-	cool_free(tmp);
-	cool_arraydel(bak);
+	dir = find_pattern_dir(bak);
 	return (find_match(dir, pattern));
+}
+
+char	*find_match(char *dir, char *pattern)
+{
+	struct dirent	*file;
+	DIR				*opdir;
+	t_glob			*lst;
+
+	add_to_match(NULL, _TRUE);
+	if (!dir || !pattern || !(opdir = opendir(dir)))
+		return (NULL);
+	while ((file = readdir(opdir)))
+		add_to_match(cool_strdup(file->d_name), _FALSE);
+	lst = add_to_match(NULL, _FALSE);
+	while (lst)
+	{
+		lst->match = matching(pattern, lst->file)
+		lst = lst->next;
+	}
+	return (glob_to_str(add_to_match(NULL, _FALSE)));
 }
 
 char		*globing(char *str)
