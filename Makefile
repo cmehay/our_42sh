@@ -6,7 +6,7 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/02/28 18:13:31 by dcouly           ###   ########.fr        #
+#    Updated: 2014/03/02 16:16:10 by cmehay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,10 @@ SRCSFILES = 42sh.c \
 			errors.c \
 			vars.c \
 			vars_lookup.c \
-			builtin_unset.c
+			builtin_unset.c \
+			globing.c \
+			globing_dir.c \
+			tools.c
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft/libft.a
 
