@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 00:19:13 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/02 17:06:03 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/02 17:32:18 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ char		*globing(char *str)
 		}
 	}
 	rtn = cool_strmerge(array_cpy, ' ');
-	ft_putendl(rtn);
 	cool_arraydel(array_cpy);
 	return (rtn);
 }
