@@ -6,24 +6,12 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 00:19:13 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/02 01:26:20 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/02 17:06:03 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
-
-static char	*sanityze(char *str)
-{
-	char	*rtn;
-
-	rtn = str;
-	while (str && *str)
-	{
-		*str = (*str == '\t') ? ' ' ? *str;
-		str++;
-	}
-	return (rtn);
-}
+#include <dirent.h>
 
 t_bool		matching(char *pattern, char *lookup)
 {
@@ -43,7 +31,7 @@ static char	*find_pattern_dir(char **split, char *str)
 	char	*dir;
 	char	*tmp;
 
-	tmp = cool_strmerge(split);
+	tmp = cool_strmerge(split, '/');
 	if (*str == '/')
 		dir = (tmp) ? cool_strjoin("/", tmp) : cool_strdup("/");
 	else
@@ -51,6 +39,29 @@ static char	*find_pattern_dir(char **split, char *str)
 	cool_free(tmp);
 	cool_arraydel(split);
 	return (dir);
+}
+
+char		*find_match(char *dir, char *pattern)
+{
+	struct dirent	*file;
+	DIR				*opdir;
+	t_glob			*lst;
+
+	add_to_match(NULL, NULL, _TRUE);
+	if (!dir || !pattern || !(opdir = opendir(dir)))
+		return (NULL);
+	while ((file = readdir(opdir)))
+	{
+		if (*file->d_name != '.' || *pattern == '.')
+		add_to_match(cool_strdup(file->d_name), dir, _FALSE);
+	}
+	lst = add_to_match(NULL, NULL, _FALSE);
+	while (lst)
+	{
+		lst->match = matching(pattern, lst->file);
+		lst = lst->next;
+	}
+	return (glob_to_str(add_to_match(NULL, NULL, _FALSE)));
 }
 
 char		*looking_for_match(char *str)
@@ -72,28 +83,8 @@ char		*looking_for_match(char *str)
 		}
 		split++;
 	}
-	dir = find_pattern_dir(bak);
+	dir = find_pattern_dir(bak, str);
 	return (find_match(dir, pattern));
-}
-
-char	*find_match(char *dir, char *pattern)
-{
-	struct dirent	*file;
-	DIR				*opdir;
-	t_glob			*lst;
-
-	add_to_match(NULL, _TRUE);
-	if (!dir || !pattern || !(opdir = opendir(dir)))
-		return (NULL);
-	while ((file = readdir(opdir)))
-		add_to_match(cool_strdup(file->d_name), _FALSE);
-	lst = add_to_match(NULL, _FALSE);
-	while (lst)
-	{
-		lst->match = matching(pattern, lst->file)
-		lst = lst->next;
-	}
-	return (glob_to_str(add_to_match(NULL, _FALSE)));
 }
 
 char		*globing(char *str)
@@ -116,7 +107,8 @@ char		*globing(char *str)
 			*split = rep;
 		}
 	}
-	rtn = cool_strmerge(array_cpy);
+	rtn = cool_strmerge(array_cpy, ' ');
+	ft_putendl(rtn);
 	cool_arraydel(array_cpy);
 	return (rtn);
 }

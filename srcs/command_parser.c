@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:32:58 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:47:49 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/02 16:11:20 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_node	*ms_command_parse(t_context *context)
 		ms_builtin_exit(context, NULL, STDOUT_FILENO);
 	if (ret == 0)
 		return (NULL);
+	cmd_line = globing(cmd_line);
 	lexer = ms_command_lex(cmd_line);
 	if (!lexer)
 		return (NULL);

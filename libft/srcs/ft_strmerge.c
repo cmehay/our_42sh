@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 16:42:13 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/01 16:59:22 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/02 16:43:46 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strmerge(char **array, int c)
 		tmp = *bak++;
 		while (tmp && *tmp)
 			*cpy++ = *tmp++;
-		if (*(bak + 1))
+		if (*(bak))
 			*cpy++ = (char)c;
 	}
 	return (rtn);
@@ -56,7 +56,7 @@ char	*cool_strmerge(char **array, int c)
 		tmp = *bak++;
 		while (tmp && *tmp)
 			*cpy++ = *tmp++;
-		if (*(bak + 1))
+		if (*(bak))
 			*cpy++ = (char)c;
 	}
 	return (rtn);
