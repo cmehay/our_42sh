@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 18:06:04 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/26 15:15:43 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/02 19:05:03 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ static void	ms_setenv_exists(t_env **var, char *value, char **name)
 	cool_free(*name);
 }
 
-int			ms_builtin_setenv(t_context *context, char **argv,
-		int __UNUSED__ outfd)
+int			ms_builtin_setenv(t_context *context, char **argv, int outfd)
 {
 	char	*name;
 	char	*value;

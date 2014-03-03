@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:12:56 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/02 18:01:45 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ static char	**ms_paths_get(t_env __UNUSED__ *env, char *cmd)
 int			ms_builtins_search_exec(t_context *context, char **argv, int outfd)
 {
 	if (ft_strcmp("cd", argv[0]) == 0)
-	{
-		ms_builtin_cd(context, argv, outfd);
-		return (0);
-	}
+		return (ms_builtin_cd(context, argv, outfd));
 	if (ft_strcmp("bg", argv[0]) == 0)
 		return (ms_builtin_bg(context, argv, outfd));
 	if (ft_strcmp("fg", argv[0]) == 0)
@@ -50,15 +47,9 @@ int			ms_builtins_search_exec(t_context *context, char **argv, int outfd)
 	if (ft_strcmp("echo", argv[0]) == 0)
 		return (ms_builtin_echo(context, argv, outfd));
 	if (ft_strcmp("setenv", argv[0]) == 0)
-	{
-		ms_builtin_setenv(context, argv, outfd);
-		return (0);
-	}
+		return (ms_builtin_setenv(context, argv, outfd));
 	if (ft_strcmp("unsetenv", argv[0]) == 0)
-	{
-		ms_builtin_unsetenv(context, argv, outfd);
-		return (0);
-	}
+		return (ms_builtin_unsetenv(context, argv, outfd));
 	return (ms_builtins_search_exec2(context, argv, outfd));
 }
 

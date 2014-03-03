@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   globing.c                                          :+:      :+:    :+:   */
+/*   globing_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/01 00:19:13 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/02 17:32:18 by cmehay           ###   ########.fr       */
+/*   Created: 2014/03/02 20:47:26 by cmehay            #+#    #+#             */
+/*   Updated: 2014/03/03 01:16:49 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,65 +26,47 @@ t_bool		matching(char *pattern, char *lookup)
 	return (_FALSE);
 }
 
-static char	*find_pattern_dir(char **split, char *str)
-{
-	char	*dir;
-	char	*tmp;
-
-	tmp = cool_strmerge(split, '/');
-	if (*str == '/')
-		dir = (tmp) ? cool_strjoin("/", tmp) : cool_strdup("/");
-	else
-		dir = (tmp) ? cool_strjoin("./", tmp) : cool_strdup("./");
-	cool_free(tmp);
-	cool_arraydel(split);
-	return (dir);
-}
-
-char		*find_match(char *dir, char *pattern)
+static void	find_pattern_dir(int depth, char *dir, char *pattern)
 {
 	struct dirent	*file;
 	DIR				*opdir;
-	t_glob			*lst;
+	char			*cpy;
 
-	add_to_match(NULL, NULL, _TRUE);
+	depth--;
 	if (!dir || !pattern || !(opdir = opendir(dir)))
-		return (NULL);
+		return ((void)cool_free(dir));
 	while ((file = readdir(opdir)))
 	{
-		if (*file->d_name != '.' || *pattern == '.')
-		add_to_match(cool_strdup(file->d_name), dir, _FALSE);
+		if (depth && ft_strcmp(file->d_name, ".")
+			&& ft_strcmp(file->d_name, ".."))
+			find_pattern_dir(depth, next_dir(dir, file->d_name), pattern);
+		else if (!depth && ft_strcmp(file->d_name, ".")
+			&& ft_strcmp(file->d_name, ".."))
+		{
+			cpy = next_dir(dir, file->d_name);
+			cpy = (*cpy == '.' && *(cpy + 1) == '/')
+				? ft_memmove(cpy, cpy + 2, ft_strlen(cpy))
+				: ft_memmove(cpy, cpy + 1, ft_strlen(cpy));
+			add_to_match(cpy, pattern, _FALSE);
+		}
 	}
-	lst = add_to_match(NULL, NULL, _FALSE);
-	while (lst)
-	{
-		lst->match = matching(pattern, lst->file);
-		lst = lst->next;
-	}
-	return (glob_to_str(add_to_match(NULL, NULL, _FALSE)));
+	cool_free(dir);
 }
 
 char		*looking_for_match(char *str)
 {
 	char	**split;
-	char	**bak;
 	char	*dir;
-	char	*pattern;
+	int		depth;
 
 	split = cool_strsplit(str, '/');
-	bak = split;
-	pattern = NULL;
-	while (split && *split)
-	{
-		if (!*(split + 1))
-		{
-			pattern = cool_strdup(*split);
-			*split = NULL;
-		}
-		split++;
-	}
-	dir = find_pattern_dir(bak, str);
-	return (find_match(dir, pattern));
+	dir = (*str == '/') ? "/" : ".";
+	depth = 0;
+	while (split && *split++)
+		depth++;
+	add_to_match(NULL, NULL, _TRUE);
+	find_pattern_dir(depth, dir, str);
+	return (glob_to_str(add_to_match(NULL, NULL, _FALSE)));
 }
 
 char		*globing(char *str)
@@ -96,18 +78,37 @@ char		*globing(char *str)
 	char	*rtn;
 
 	cpy = cool_strdup(str);
-	split = cool_strsplit(sanityze(cpy), ' ');
+	split = cool_strsplit(sanityze(cpy = cool_strdup(str)), ' ');
 	array_cpy = split;
 	cool_free(cpy);
 	while (split && *split && *(++split))
 	{
-		if ((rep = looking_for_match(*split)))
+		if (ft_strchr(*split, '*') || ft_strchr(*split, '?'))
 		{
+			if (!(rep = looking_for_match(*split)))
+				ms_not_match(*split);
 			cool_free(*split);
-			*split = rep;
+			*split = (rep) ? rep : cool_strnew(0);
 		}
 	}
 	rtn = cool_strmerge(array_cpy, ' ');
 	cool_arraydel(array_cpy);
+	return (rtn);
+}
+
+char		*globing_test(char *str)
+{
+	char	*rtn;
+
+	rtn = str;
+	if (ft_strchr(str, '*') || ft_strchr(str, '?'))
+	{
+		rtn = ft_strtrim_cpy(globing(str));
+		if (rtn && !ft_strchr(rtn, ' '))
+		{
+			cool_free(rtn);
+			rtn = cool_strnew(0);
+		}
+	}
 	return (rtn);
 }

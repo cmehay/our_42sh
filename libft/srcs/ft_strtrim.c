@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 18:07:55 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/11 12:56:34 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/03 00:31:19 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,15 @@ char	*cool_strtrim(char const *s)
 			rtn[i++] = s[start++];
 	rtn[i] = 0;
 	return (rtn);
+}
+
+char	*ft_strtrim_cpy(char *s)
+{
+	char	*cpy;
+
+	cpy = ft_strtrim(s);
+	ft_strclr(s);
+	ft_strcpy(s, cpy);
+	free(cpy);
+	return (s);
 }

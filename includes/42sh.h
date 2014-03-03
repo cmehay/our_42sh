@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/02 16:31:42 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/02 23:56:40 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,9 +229,7 @@ typedef struct s_glob	t_glob;
 struct s_glob
 {
 	char	*file;
-	char	*path;
 	int		len;
-	int		match;
 	t_glob	*next;
 };
 
@@ -282,6 +280,8 @@ void		*ms_function_failed(char *msg, void *ret);
 int			ms_err_ret(char *msg, int ret);
 void		ms_err_display(char *msg);
 void		ms_command_not_found(char *command);
+int			ms_not_match(char *command);
+
 
 int			ms_is_space(char c);
 int			ms_is_special(char c);
@@ -403,11 +403,13 @@ t_bool		matching(char *pattern, char *lookup);
 char		*looking_for_match(char *str);
 char		*find_match(char *dir, char *pattern);
 char		*globing(char *str);
+char		*globing_test(char *str);
 
-void		*destroy_glob(t_glob *lst);
-t_glob		*new_match(char *file, char *path);
-t_glob		*add_to_match(char *file, char *path, t_bool reset);
+t_glob		*add_to_match(char *file, char *pattern, t_bool reset);
 char		*glob_to_str(t_glob *lst);
+
 char		*sanityze(char *str);
+char		*next_dir(char *dir, char *file);
+
 
 #endif /* !SH_H */
