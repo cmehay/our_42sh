@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   globing_2.c                                        :+:      :+:    :+:   */
+/*   globing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 20:47:26 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/03 01:16:49 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/03 01:23:13 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	find_pattern_dir(int depth, char *dir, char *pattern)
 		{
 			cpy = next_dir(dir, file->d_name);
 			cpy = (*cpy == '.' && *(cpy + 1) == '/')
-				? ft_memmove(cpy, cpy + 2, ft_strlen(cpy))
+				? ft_memmove(cpy, cpy + 2, ft_strlen(cpy) - 1)
 				: ft_memmove(cpy, cpy + 1, ft_strlen(cpy));
 			add_to_match(cpy, pattern, _FALSE);
 		}
