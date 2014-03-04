@@ -6,14 +6,14 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/24 20:35:52 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/25 03:05:11 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/04 17:48:30 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 #include "stdlib.h"
 
-static t_vars	*gimme_vars(void)
+t_vars			*gimme_vars(void)
 {
 	static t_vars	*lst = NULL;
 

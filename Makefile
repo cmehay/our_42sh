@@ -6,7 +6,7 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/03/03 01:19:03 by cmehay           ###   ########.fr        #
+#    Updated: 2014/03/04 17:51:24 by cmehay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ SRCSFILES = 42sh.c \
 			builtin_stop.c \
 			builtin_point_excl.c \
 			builtin_export.c \
+			builtin_export_display.c \
 			signals.c \
 			errors.c \
 			vars.c \

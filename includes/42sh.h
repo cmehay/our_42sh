@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/02 23:56:40 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/04 17:48:09 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -383,8 +383,12 @@ int			ms_builtin_export(t_context *context, char **argv,
 int			ms_builtin_setvar(t_context *context, char **argv,
 		int __UNUSED__ outfd);
 char		*find_var(char *var, t_context *context);
+
+t_vars		*gimme_vars(void);
 t_bool		is_a_var(char *str);
 t_bool		is_a_var_set(char *str);
+
+int		ms_export_display(t_context *context, char **argv, int outfd);
 
 int			ms_builtin_unset(t_context *context, char **argv,
 		int __UNUSED__ outfd);
