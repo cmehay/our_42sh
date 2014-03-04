@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:12:38 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/04 19:32:40 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int		ms_command_exec_normal(t_context *context, t_command *cmd,
 		if (context->fg[context->num_fg++] == 0)
 			tcsetpgrp(STDIN_FILENO, getpgid(child));
 		if (context->fg[context->num_fg - 1] != -1)
-			ms_jobs_lstadd(context, cmd->name, context->fg[context->num_fg - 1], child);
+			ms_jobs_lstadd(context, cmd->name, context->fg[context->num_fg - 1],
+			child);
 		else
 			ms_jobs_add_cmd(cmd->name, context);
 		return (ms_command_exec_parent(context, cmd, child));
@@ -108,7 +109,7 @@ int		ms_exec_command(t_context *context, t_node *node)
 		return (-1);
 	}
 	looking_for_vars_in_array(cmd->argv, context);
-	ret = ms_builtins_search_exec(context, cmd->argv, outfd);
+	ret = ms_builtins_search_exec(context, cmd, outfd);
 	if (ret < 0)
 		ret = ms_command_exec_normal(context, cmd, infd, outfd);
 	if (outfd != STDOUT_FILENO)

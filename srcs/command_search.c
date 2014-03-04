@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/02 18:01:45 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/04 19:57:42 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,53 +30,53 @@ static char	**ms_paths_get(t_env __UNUSED__ *env, char *cmd)
 	return (NULL);
 }
 
-int			ms_builtins_search_exec(t_context *context, char **argv, int outfd)
+int			ms_builtins_search_exec(t_context *context, t_command *cmd,
+	int outfd)
 {
-	if (ft_strcmp("cd", argv[0]) == 0)
-		return (ms_builtin_cd(context, argv, outfd));
-	if (ft_strcmp("bg", argv[0]) == 0)
-		return (ms_builtin_bg(context, argv, outfd));
-	if (ft_strcmp("fg", argv[0]) == 0)
-		return (ms_builtin_fg(context, argv, outfd));
-	if (ft_strcmp("stop", argv[0]) == 0)
-		return (ms_builtin_stop(context, argv, outfd));
-	if (ft_strcmp("history", argv[0]) == 0)
+	if (ft_strcmp("cd", cmd->argv[0]) == 0)
+		return (ms_builtin_cd(context, cmd->argv, outfd));
+	if (ft_strcmp("bg", cmd->argv[0]) == 0)
+		return (ms_builtin_bg(context, cmd->argv, outfd));
+	if (ft_strcmp("fg", cmd->argv[0]) == 0)
+		return (ms_builtin_fg(context, cmd->argv, outfd));
+	if (ft_strcmp("stop", cmd->argv[0]) == 0)
+		return (ms_builtin_stop(context, cmd->argv, outfd));
+	if (ft_strcmp("history", cmd->argv[0]) == 0)
 		return (ms_builtin_history(context));
-	if (ft_strcmp("jobs", argv[0]) == 0)
+	if (ft_strcmp("jobs", cmd->argv[0]) == 0)
 		return (ms_builtin_jobs(context, outfd));
-	if (ft_strcmp("echo", argv[0]) == 0)
-		return (ms_builtin_echo(context, argv, outfd));
-	if (ft_strcmp("setenv", argv[0]) == 0)
-		return (ms_builtin_setenv(context, argv, outfd));
-	if (ft_strcmp("unsetenv", argv[0]) == 0)
-		return (ms_builtin_unsetenv(context, argv, outfd));
-	return (ms_builtins_search_exec2(context, argv, outfd));
+	if (ft_strcmp("echo", cmd->argv[0]) == 0)
+		return (ms_builtin_echo(context, cmd->argv, outfd));
+	if (ft_strcmp("setenv", cmd->argv[0]) == 0)
+		return (ms_builtin_setenv(context, cmd->argv, outfd));
+	if (ft_strcmp("unsetenv", cmd->argv[0]) == 0)
+		return (ms_builtin_unsetenv(context, cmd->argv, outfd));
+	return (ms_builtins_search_exec2(context, cmd, outfd));
 }
 
-int			ms_builtins_search_exec2(t_context *context, char **argv, int outfd)
+int			ms_builtins_search_exec2(t_context *context, t_command *cmd,
+	int outfd)
 {
-	if (ft_strcmp("env", argv[0]) == 0)
+	if (ft_strcmp("env", cmd->argv[0]) == 0)
 	{
-		ms_builtin_env(context, argv, outfd);
-		return (0);
+		if (!ms_builtin_env(context, cmd->argv, outfd))
+			return (0);
+		else
+		{
+			cool_free(cmd->argv[0]);
+			cool_free(cmd->argv[1]);
+			cmd->argv = cmd->argv + 2;
+			cmd->null_env = _TRUE;
+		}
 	}
-	if (ft_strcmp("exit", argv[0]) == 0)
-		ms_builtin_exit(context, argv, outfd);
-	if (is_a_var_set(argv[0]))
-	{
-		ms_builtin_setvar(context, argv, outfd);
-		return (0);
-	}
-	if (ft_strcmp("export", argv[0]) == 0)
-	{
-		ms_builtin_export(context, argv, outfd);
-		return (0);
-	}
-	if (ft_strcmp("unset", argv[0]) == 0)
-	{
-		ms_builtin_unset(context, argv, outfd);
-		return (0);
-	}
+	if (ft_strcmp("exit", cmd->argv[0]) == 0)
+		ms_builtin_exit(context, cmd->argv, outfd);
+	if (is_a_var_set(cmd->argv[0]))
+		return (ms_builtin_setvar(context, cmd->argv, outfd));
+	if (ft_strcmp("export", cmd->argv[0]) == 0)
+		return (ms_builtin_export(context, cmd->argv, outfd));
+	if (ft_strcmp("unset", cmd->argv[0]) == 0)
+		return (ms_builtin_unset(context, cmd->argv, outfd));
 	return (-1);
 }
 

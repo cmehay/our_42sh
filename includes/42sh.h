@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/04 17:48:09 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/04 19:54:14 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,7 @@ typedef struct	s_command
 	char	**argv;
 	t_cmdio	fdin;
 	t_cmdio	fdout;
+	t_bool	null_env;
 }				t_command;
 
 typedef struct s_vars	t_vars;
@@ -255,8 +256,9 @@ void		ms_prompt_run(t_context *context);
 int			ms_prompt_len(t_context *context);
 t_node		*ms_command_parse(t_context *context);
 
-int			ms_builtins_search_exec(t_context *context, char **argv, int outfd);
-int			ms_builtins_search_exec2(t_context *context, char **argv,
+int			ms_builtins_search_exec(t_context *context, t_command *cmd,
+		int outfd);
+int			ms_builtins_search_exec2(t_context *context, t_command *cmd,
 		int outfd);
 char		*ms_command_search(t_context *context, char *cmd);
 
@@ -388,7 +390,7 @@ t_vars		*gimme_vars(void);
 t_bool		is_a_var(char *str);
 t_bool		is_a_var_set(char *str);
 
-int		ms_export_display(t_context *context, char **argv, int outfd);
+int			ms_export_display(t_context *context, char **argv, int outfd);
 
 int			ms_builtin_unset(t_context *context, char **argv,
 		int __UNUSED__ outfd);
