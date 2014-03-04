@@ -6,7 +6,7 @@
 /*   By: dcouly <dcouly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 15:12:08 by dcouly            #+#    #+#             */
-/*   Updated: 2014/02/26 18:56:45 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/04 17:30:10 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,15 @@
 
 static int	ms_print_not_found(char *argv1, int outfd)
 {
-	ft_putstr_fd("bg : job not found: ", outfd);
-	ft_putendl_fd(argv1, outfd);
+	if (argv1)
+	{
+		ft_putstr_fd("bg : job not found: ", outfd);
+		ft_putendl_fd(argv1, outfd);
+	}
+	else
+	{
+		ft_putendl_fd("bg : job not found", outfd);
+	}
 	return (0);
 }
 
