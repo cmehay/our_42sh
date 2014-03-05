@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:29:18 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/05 00:11:36 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ms_exec_processes_wait(t_context *context)
 	return (status[0]);
 }
 
-int		ms_exec_semicol(t_context *context, t_node *node)
+static int	ms_exec_semicol(t_context *context, t_node *node)
 {
 	int	ret;
 
@@ -72,7 +72,7 @@ int		ms_exec_semicol(t_context *context, t_node *node)
 	return (ret);
 }
 
-int		ms_exec_and(t_context *context, t_node *node)
+static int	ms_exec_and(t_context *context, t_node *node)
 {
 	int	ret1;
 	int	ret2;
@@ -86,7 +86,7 @@ int		ms_exec_and(t_context *context, t_node *node)
 	return (ret1);
 }
 
-int		ms_exec_or(t_context *context, t_node *node)
+static int	ms_exec_or(t_context *context, t_node *node)
 {
 	int	ret1;
 	int	ret2;
@@ -102,11 +102,16 @@ int		ms_exec_or(t_context *context, t_node *node)
 
 int		ms_exec_tree(t_context *context, t_node *node)
 {
-	int	ret;
+	int			ret;
+	t_command	*cmd;
 
 	ret = 0;
 	if (node->type == NODE_COMMAND)
+	{
+		cmd = (t_command*)node->data;
+		cmd->env_cpy = ms_env_copy(context->env, NULL);
 		ret = ms_exec_command(context, node);
+	}
 	if (node->type == NODE_PIPE)
 		ret = ms_exec_pipe(context, node);
 	if (node->type == NODE_AND)

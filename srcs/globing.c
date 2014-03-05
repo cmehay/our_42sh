@@ -16,14 +16,14 @@
 t_bool		matching(char *pattern, char *lookup)
 {
 	if (!*pattern && !*lookup)
-		return (_TRUE);
+		return (TRUE);
 	if (*pattern == '*' && *(pattern + 1) && !*lookup)
-		return (_FALSE);
+		return (FALSE);
 	if (*pattern == '?' || *pattern == *lookup)
 		return matching(pattern + 1, lookup + 1);
 	if (*pattern == '*')
 		return (matching(pattern + 1, lookup) || matching(pattern, lookup + 1));
-	return (_FALSE);
+	return (FALSE);
 }
 
 static void	find_pattern_dir(int depth, char *dir, char *pattern)
@@ -47,7 +47,7 @@ static void	find_pattern_dir(int depth, char *dir, char *pattern)
 			cpy = (*cpy == '.' && *(cpy + 1) == '/')
 				? ft_memmove(cpy, cpy + 2, ft_strlen(cpy) - 1)
 				: ft_memmove(cpy, cpy + 1, ft_strlen(cpy));
-			add_to_match(cpy, pattern, _FALSE);
+			add_to_match(cpy, pattern, FALSE);
 		}
 	}
 	cool_free(dir);
@@ -64,9 +64,9 @@ char		*looking_for_match(char *str)
 	depth = 0;
 	while (split && *split++)
 		depth++;
-	add_to_match(NULL, NULL, _TRUE);
+	add_to_match(NULL, NULL, TRUE);
 	find_pattern_dir(depth, dir, str);
-	return (glob_to_str(add_to_match(NULL, NULL, _FALSE)));
+	return (glob_to_str(add_to_match(NULL, NULL, FALSE)));
 }
 
 char		*globing(char *str)

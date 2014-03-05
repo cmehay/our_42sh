@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 17:19:07 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:48:22 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 00:28:46 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ void	ms_env_lstdelone(t_env **current)
 	}
 }
 
-void	ms_env_lstdel(t_context *context)
+void	ms_env_lstdel(t_env *env)
 {
 	t_env	*current;
 	t_env	*next;
 
-	current = context->env;
+	current = env;
 	while (current)
 	{
 		next = current->next;
@@ -73,7 +73,23 @@ void	ms_env_lstdel(t_context *context)
 		cool_free(current);
 		current = next;
 	}
-	current = NULL;
+}
+
+t_env	*ms_env_copy(t_env *env, t_env *prev)
+{
+	t_env	*copy;
+
+	if (env)
+	{
+		copy = (t_env*)cool_malloc(sizeof(t_env));
+		copy->name = cool_strdup(env->name);
+		copy->value = cool_strdup(env->value);
+		copy->prev = prev;
+		copy->next = ms_env_copy(env->next, copy);
+	}
+	else
+		return (NULL);
+	return (copy);
 }
 
 t_env	*ms_env_get(t_context *context)

@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   command_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcouly <dcouly@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/21 15:03:08 by dcouly            #+#    #+#             */
-/*   Updated: 2014/02/22 15:50:43 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/04 20:45:44 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 #include <unistd.h>
 #include <term.h>
-#include <curses.h>
 #include <sys/ioctl.h>
 
-void	ft_fenetre_size(int *len, int *wid)
+static void	ft_fenetre_size(int *len, int *wid)
 {
 	struct winsize	w;
 
@@ -25,7 +24,7 @@ void	ft_fenetre_size(int *len, int *wid)
 	*wid = w.ws_col;
 }
 
-void	ms_clean_line(t_cmd_char **cmd_char, int len, uint64_t nb)
+void		ms_clean_line(t_cmd_char **cmd_char, int len, uint64_t nb)
 {
 	int			wid;
 	int			nb_c;
@@ -37,7 +36,7 @@ void	ms_clean_line(t_cmd_char **cmd_char, int len, uint64_t nb)
 	while (current)
 	{
 		nb_c++;
-		if (current->cursor == _TRUE)
+		if (current->cursor == TRUE)
 			break ;
 		current = current->next;
 	}
@@ -53,7 +52,7 @@ void	ms_clean_line(t_cmd_char **cmd_char, int len, uint64_t nb)
 	tputs(tgetstr("cd", NULL), 0, ms_putchar);
 }
 
-void	ms_print_line(t_cmd_char **cmd_char)
+void		ms_print_line(t_cmd_char **cmd_char)
 {
 	t_cmd_char	*current;
 	int			found;
@@ -66,13 +65,13 @@ void	ms_print_line(t_cmd_char **cmd_char)
 		current = current->next;
 	}
 	current = *cmd_char;
-	if (current->cursor == _TRUE)
+	if (current->cursor == TRUE)
 		found = 1;
 	while (current)
 	{
 		if (found && current->next != NULL)
 			tputs(tgetstr("le", NULL), 1, ms_putchar);
-		if (current->next != NULL && current->next->cursor == _TRUE)
+		if (current->next != NULL && current->next->cursor == TRUE)
 			found = 1;
 		current = current->next;
 	}

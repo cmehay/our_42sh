@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/04 19:49:08 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 01:31:19 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ static void	ms_command_exec_child_pipes(t_command *cmd)
 	}
 }
 
-void		ms_command_exec_child(t_context *context, t_command *cmd,
+void		ms_command_exec_child(t_context __UNUSED__ *context, t_command *cmd,
 		int infd, int outfd)
 {
 	char	**env;
 
 	ms_command_exec_child_dups(infd, outfd);
 	ms_command_exec_child_pipes(cmd);
-	env = ms_env_clone(context->env);
+	env = ms_env_clone(cmd->env_cpy);
 	if (env && !cmd->null_env)
 		execve(cmd->name, cmd->argv, env);
 	else

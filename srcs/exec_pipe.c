@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:52:47 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 01:09:22 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int		ms_exec_pipe_create(t_node *node)
+static int	ms_exec_pipe_create(t_node *node)
 {
 	int	*pfd;
 	int	ret;
@@ -31,7 +31,7 @@ int		ms_exec_pipe_create(t_node *node)
 	return (ret);
 }
 
-int		ms_exec_pipe(t_context *context, t_node *node)
+int			ms_exec_pipe(t_context *context, t_node *node)
 {
 	int	*pfd;
 	int	ret;

@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/24 21:49:33 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/04 18:02:01 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 02:42:54 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ t_bool	is_a_var_set(char *str)
 
 	i = -1;
 	if (str && *str == '=')
-		return (_FALSE);
-	while (str && str[++i])
+		return (FALSE);
+	while (str && str[++i] && str[i] != '=')
 	{
-		if (i > 0 && str[i] == '=')
-		{
-			if (ft_isalpha(str[i - 1]) && ft_isalpha(str[i + 1]))
-				return (_TRUE);
-		}
+		if (!ft_isalpha(str[i]))
+			return (FALSE);
 	}
-	return (_FALSE);
+	if (str[i] != '=')
+		return (FALSE);
+	return (TRUE);
 }
 
 t_bool	is_a_var(char *str)
@@ -37,11 +36,11 @@ t_bool	is_a_var(char *str)
 		while (str && *(str + 1))
 		{
 			if (!ft_isalpha(*(++str)))
-				return (_FALSE);
+				return (FALSE);
 		}
-		return (_TRUE);
+		return (TRUE);
 	}
-	return (_FALSE);
+	return (FALSE);
 }
 
 char	*find_var(char *var, t_context *context)

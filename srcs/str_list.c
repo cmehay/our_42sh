@@ -13,7 +13,6 @@
 #include "42sh.h"
 #include "libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 t_str	*ms_str_lstadd(char *var, t_str **l_str)
 {

@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/04 19:32:40 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 02:05:22 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <signal.h>
 
-int		ms_command_process_add(t_context *context, pid_t child)
+int				ms_command_process_add(t_context *context, pid_t child)
 {
 	t_process	*proc;
 	t_process	*curr;
@@ -37,14 +37,14 @@ int		ms_command_process_add(t_context *context, pid_t child)
 	return (0);
 }
 
-int		ms_command_exec_parent(t_context *context, t_command *cmd, pid_t child)
+static int		ms_command_exec_parent(t_context *context, t_command *cmd, pid_t child)
 {
 	if (cmd->fdin.type == IO_READLINE)
 		close(cmd->fdin.pipe[PIPE_READ]);
 	return (ms_command_process_add(context, child));
 }
 
-int		ms_command_exec_normal(t_context *context, t_command *cmd,
+static int		ms_command_exec_normal(t_context *context, t_command *cmd,
 		int infd, int outfd)
 {
 	char	*name;
@@ -52,7 +52,7 @@ int		ms_command_exec_normal(t_context *context, t_command *cmd,
 	pid_t	father;
 
 	father = getpid();
-	name = ms_command_search(context, cmd->argv[0]);
+	name = ms_command_search(cmd->env_cpy, cmd->argv[0]);
 	if (!name)
 		return (-1);
 	cmd->name = name;
@@ -90,7 +90,7 @@ int		ms_command_exec_normal(t_context *context, t_command *cmd,
 	return (0);
 }
 
-int		ms_exec_command(t_context *context, t_node *node)
+int			ms_exec_command(t_context *context, t_node *node)
 {
 	t_command	*cmd;
 	int			outfd;

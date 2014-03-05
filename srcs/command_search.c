@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/04 19:57:42 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 02:38:22 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include "libft.h"
 #include <stdlib.h>
 
-static char	**ms_paths_get(t_env __UNUSED__ *env, char *cmd)
+static char	**ms_paths_get(t_env *env, char *cmd)
 {
 	t_env	*path;
 	char	**paths;
 
-	if ((path = ms_var_ptr_get(ms_context_get(), "PATH")))
+	if ((path = ms_env_get_content(env, "PATH")) && *(path->value))
 	{
 		paths = cool_strsplit(path->value, ':');
 		if (paths == NULL)
@@ -57,16 +57,18 @@ int			ms_builtins_search_exec(t_context *context, t_command *cmd,
 int			ms_builtins_search_exec2(t_context *context, t_command *cmd,
 	int outfd)
 {
+	int	shift;
+
 	if (ft_strcmp("env", cmd->argv[0]) == 0)
 	{
-		if (!ms_builtin_env(context, cmd->argv, outfd))
+		if (!(shift = ms_builtin_env(context, cmd->argv, outfd)))
 			return (0);
 		else
 		{
+			cmd->null_env = change_env(cmd);
 			cool_free(cmd->argv[0]);
 			cool_free(cmd->argv[1]);
-			cmd->argv = cmd->argv + 2;
-			cmd->null_env = _TRUE;
+			cmd->argv = cmd->argv + shift;
 		}
 	}
 	if (ft_strcmp("exit", cmd->argv[0]) == 0)
@@ -110,7 +112,7 @@ static int	ms_is_a_path(char *cmd)
 	return (0);
 }
 
-char		*ms_command_search(t_context *context, char *cmd)
+char		*ms_command_search(t_env *env_cpy, char *cmd)
 {
 	char	**paths;
 	size_t	i;
@@ -118,7 +120,7 @@ char		*ms_command_search(t_context *context, char *cmd)
 
 	if (ms_is_a_path(cmd) && !access(cmd, F_OK | X_OK))
 		return (cool_strdup(cmd));
-	if ((paths = ms_paths_get(context->env, cmd)) == NULL)
+	if ((paths = ms_paths_get(env_cpy, cmd)) == NULL)
 		return (NULL);
 	i = 0;
 	while (paths[i])

@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:13:10 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/04 20:45:55 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <curses.h>
 #include <term.h>
 
 t_cmd_char	*ms_get_cursor_position(t_cmd_char **cmd_char)
@@ -25,7 +24,7 @@ t_cmd_char	*ms_get_cursor_position(t_cmd_char **cmd_char)
 	current = *cmd_char;
 	while (current)
 	{
-		if (current->cursor == _TRUE)
+		if (current->cursor == TRUE)
 		{
 			return (current);
 		}

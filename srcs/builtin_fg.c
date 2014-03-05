@@ -13,7 +13,6 @@
 #include "42sh.h"
 #include "libft.h"
 #include <signal.h>
-#include <stdio.h>
 
 static int	ms_print_not_found(char *argv1, int outfd)
 {

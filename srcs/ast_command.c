@@ -6,14 +6,14 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/24 17:08:29 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/05 00:35:51 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 #include <stdlib.h>
 
-void	ms_ast_command_clean(void *data)
+static void		ms_ast_command_clean(void *data)
 {
 	t_command	*command;
 	int			i;
@@ -28,6 +28,8 @@ void	ms_ast_command_clean(void *data)
 			cool_free(command->argv[i++]);
 		cool_free(command->argv);
 	}
+	if (command->env_cpy)
+		ms_env_lstdel(command->env_cpy);
 	if (command->fdin.filename)
 		cool_free(command->fdin.filename);
 	if (command->fdout.filename)
@@ -35,14 +37,14 @@ void	ms_ast_command_clean(void *data)
 	cool_free(command);
 }
 
-void	ms_ast_command_io_init(t_cmdio *cmdio)
+static void		ms_ast_command_io_init(t_cmdio *cmdio)
 {
 	cmdio->type = IO_DEFAULT;
 	cmdio->filename = NULL;
 	cmdio->pipenode = NULL;
 }
 
-t_node	*ms_ast_command_alloc(t_node *parent, t_direction dir)
+static t_node	*ms_ast_command_alloc(t_node *parent, t_direction dir)
 {
 	t_node		*node;
 	t_command	*cmd;
@@ -65,7 +67,7 @@ t_node	*ms_ast_command_alloc(t_node *parent, t_direction dir)
 	return (node);
 }
 
-int		ms_ast_command_fill(t_node **node, t_lex *lexer)
+static int		ms_ast_command_fill(t_node **node, t_lex *lexer)
 {
 	t_command	*cmd;
 	int			ret;
@@ -85,7 +87,7 @@ int		ms_ast_command_fill(t_node **node, t_lex *lexer)
 	return (0);
 }
 
-t_node	*ms_ast_build_command(t_lex *lexer, t_node *parent, t_direction dir)
+t_node			*ms_ast_build_command(t_lex *lexer, t_node *parent, t_direction dir)
 {
 	t_node	*node;
 	int		ret;

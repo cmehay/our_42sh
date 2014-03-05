@@ -6,14 +6,14 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/24 17:21:30 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/05 00:38:34 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 #include "libft.h"
 
-t_lex		*ms_ast_lexer_command_alien_find(t_lex *lexer)
+static t_lex	*ms_ast_lexer_command_alien_find(t_lex *lexer)
 {
 	t_lex	*current;
 
@@ -27,7 +27,7 @@ t_lex		*ms_ast_lexer_command_alien_find(t_lex *lexer)
 	return (NULL);
 }
 
-int			ms_ast_command_indir_in(t_command *cmd, t_lex *item)
+static int		ms_ast_command_indir_in(t_command *cmd, t_lex *item)
 {
 	if (cmd->fdin.type != IO_DEFAULT)
 	{
@@ -40,7 +40,7 @@ int			ms_ast_command_indir_in(t_command *cmd, t_lex *item)
 	return (0);
 }
 
-int			ms_ast_command_indir_out(t_command *cmd, t_lex *item)
+static int		ms_ast_command_indir_out(t_command *cmd, t_lex *item)
 {
 	if (cmd->fdout.type != IO_DEFAULT)
 	{
@@ -53,7 +53,7 @@ int			ms_ast_command_indir_out(t_command *cmd, t_lex *item)
 	return (0);
 }
 
-int			ms_ast_command_indir_add(t_command *cmd, t_lex **lexer, t_lex *item)
+static int		ms_ast_command_indir_add(t_command *cmd, t_lex **lexer, t_lex *item)
 {
 	int	ret;
 
@@ -67,7 +67,7 @@ int			ms_ast_command_indir_add(t_command *cmd, t_lex **lexer, t_lex *item)
 	return (ret);
 }
 
-int			ms_ast_command_indir(t_command *cmd, t_lex **lexer)
+int				ms_ast_command_indir(t_command *cmd, t_lex **lexer)
 {
 	t_lex	*item;
 	int		ret;

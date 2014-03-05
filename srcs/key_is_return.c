@@ -13,7 +13,6 @@
 #include "42sh.h"
 #include "libft.h"
 
-#include <stdio.h>
 
 static int	ms_nb_exec(t_cmd_char **cmd_char)
 {

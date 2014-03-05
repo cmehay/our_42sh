@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:10:27 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:47:03 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/05 01:23:10 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <termcap.h>
 #include <termios.h>
 
-static void	ms_signal_killall(int __UNUSED__ sig)
+void	ms_signal_killall(int __UNUSED__ sig)
 {
 	t_context	*context;
 	t_jobs		*job;
@@ -45,7 +45,7 @@ static void	ms_signal_killall(int __UNUSED__ sig)
 	}
 }
 
-static void	ms_signal_win_resize(int __UNUSED__ sig)
+void	ms_signal_win_resize(int __UNUSED__ sig)
 {
 	t_context		*context;
 	struct winsize	ws;
@@ -60,7 +60,7 @@ static void	ms_signal_win_resize(int __UNUSED__ sig)
 	}
 }
 
-static void	ms_signal_exit(int __UNUSED__ sig)
+void	ms_signal_exit(int __UNUSED__ sig)
 {
 	t_context	*context;
 
@@ -70,7 +70,7 @@ static void	ms_signal_exit(int __UNUSED__ sig)
 	exit(1);
 }
 
-static void	ms_signal_stp(int __UNUSED__ sig)
+void	ms_signal_stp(int __UNUSED__ sig)
 {
 	t_context	*context;
 	int			pid;
@@ -93,36 +93,7 @@ static void	ms_signal_stp(int __UNUSED__ sig)
 		kill(pid, SIGTSTP);
 }
 
-static void	ms_nothing(int __UNUSED__ sig)
+void	ms_nothing(int __UNUSED__ sig)
 {
 	(void) sig;
-}
-
-void		ms_signal_catch(void)
-{
-	signal(SIGINT, ms_signal_killall);
-	signal(SIGWINCH, ms_signal_win_resize);
-	signal(SIGTSTP, ms_signal_stp);
-	signal(SIGCONT, SIG_IGN);
-	signal(SIGUSR1, ms_nothing);
-	signal(SIGQUIT, ms_signal_exit);
-	/*
-	signal(SIGSEGV, ms_signal_exit);
-	signal(SIGTERM, ms_signal_exit);
-	signal(SIGHUP, ms_signal_exit);
-	signal(SIGUSR1, ms_signal_exit);
-	signal(SIGUSR2, ms_signal_exit);
-	signal(SIGALRM, ms_signal_exit);
-	signal(SIGBUS, ms_signal_exit);
-	signal(SIGFPE, ms_signal_exit);
-	signal(SIGILL, ms_signal_exit);
-	signal(SIGPIPE, ms_signal_exit);
-	signal(SIGPROF, ms_signal_exit);
-	signal(SIGSYS, ms_signal_exit);
-	signal(SIGVTALRM, ms_signal_exit);
-	signal(SIGXCPU, ms_signal_exit);
-	signal(SIGXFSZ, ms_signal_exit);
-	signal(SIGTRAP, ms_signal_exit);
-	signal(SIGABRT, ms_signal_exit);
-	*/
 }

@@ -6,14 +6,13 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 18:59:00 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 19:04:47 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/04 20:42:58 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 #include <stdlib.h>
 #include <termios.h>
-#include <curses.h>
 #include <term.h>
 
 static void	ms_capabilities_load(t_term *term)

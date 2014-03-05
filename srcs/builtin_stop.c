@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_stop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcouly <dcouly@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 18:47:57 by dcouly            #+#    #+#             */
-/*   Updated: 2014/02/26 19:12:52 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/04 20:47:00 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 #include "libft.h"
 #include <signal.h>
-#include <stdio.h>
-
+//
 static int	ms_print_not_found(char *argv1, int outfd)
 {
 	ft_putstr_fd("stop : job not found: ", outfd);

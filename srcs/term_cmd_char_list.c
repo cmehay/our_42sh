@@ -6,27 +6,27 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 17:19:07 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/21 16:52:28 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/05 01:24:39 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 #include <stdlib.h>
 
-t_cmd_char	*ms_cmd_char_alloc(char character)
+static t_cmd_char	*ms_cmd_char_alloc(char character)
 {
 	t_cmd_char	*elem;
 
 	if ((elem = (t_cmd_char *) cool_malloc(sizeof(t_cmd_char))) == NULL)
 		return ((t_cmd_char *) ms_function_failed("cool_malloc failed", NULL));
 	elem->character = character;
-	elem->cursor = _FALSE;
+	elem->cursor = FALSE;
 	elem->prev = NULL;
 	elem->next = NULL;
 	return (elem);
 }
 
-t_cmd_char	*ms_cmd_char_lstadd(t_cmd_char *cmd_char, char character)
+t_cmd_char			*ms_cmd_char_lstadd(t_cmd_char *cmd_char, char character)
 {
 	t_cmd_char	*elem;
 	t_cmd_char	*current;
@@ -35,12 +35,12 @@ t_cmd_char	*ms_cmd_char_lstadd(t_cmd_char *cmd_char, char character)
 		return (NULL);
 	if (cmd_char == NULL)
 	{
-		elem->cursor = _TRUE;
+		elem->cursor = TRUE;
 		cmd_char = elem;
 		return (elem);
 	}
 	current = cmd_char;
-	while (current->cursor == _FALSE)
+	while (current->cursor == FALSE)
 		current = current->next;
 	elem->prev = current->prev;
 	current->prev = elem;
@@ -52,7 +52,7 @@ t_cmd_char	*ms_cmd_char_lstadd(t_cmd_char *cmd_char, char character)
 	return (cmd_char);
 }
 
-void		ms_cmd_char_lstdelone(t_cmd_char *current)
+void			ms_cmd_char_lstdelone(t_cmd_char *current)
 {
 	if (current)
 	{
@@ -64,7 +64,7 @@ void		ms_cmd_char_lstdelone(t_cmd_char *current)
 	}
 }
 
-void		ms_cmd_char_lstdel(t_cmd_char **cmd_char)
+void			ms_cmd_char_lstdel(t_cmd_char **cmd_char)
 {
 	t_cmd_char	*current;
 	t_cmd_char	*next;
