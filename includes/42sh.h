@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 02:33:05 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 13:59:43 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define KEY_IS_CTRL_D 0x000000000004
 # define KEY_IS_BACKSPACE 0x00000000007f
 # define KEY_IS_RETURN 0x00000000000a
+
 # define STOPPED 0
 # define FORGROUND 1
 # define BACKGROUND 2
@@ -410,9 +411,9 @@ void		ms_print_line(t_cmd_char **cmd_char);
 ** command_search.c
 */
 int			ms_builtins_search_exec(t_context *context, t_command *cmd,
-		int outfd);
+	int outfd);
 int			ms_builtins_search_exec2(t_context *context, t_command *cmd,
-		int outfd);
+	int outfd);
 char		*ms_command_search(t_env *env_cpy, char *cmd);
 
 /*

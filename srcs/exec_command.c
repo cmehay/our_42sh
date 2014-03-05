@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 02:05:22 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 15:30:11 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static int		ms_command_exec_normal(t_context *context, t_command *cmd,
 	pid_t	father;
 
 	father = getpid();
+	if (!cmd->argv[0])
+		return (-1);
 	name = ms_command_search(cmd->env_cpy, cmd->argv[0]);
 	if (!name)
 		return (-1);

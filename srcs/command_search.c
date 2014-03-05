@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 02:38:22 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 15:28:39 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int			ms_builtins_search_exec2(t_context *context, t_command *cmd,
 			cool_free(cmd->argv[0]);
 			cool_free(cmd->argv[1]);
 			cmd->argv = cmd->argv + shift;
+			return (-1);
 		}
 	}
 	if (ft_strcmp("exit", cmd->argv[0]) == 0)

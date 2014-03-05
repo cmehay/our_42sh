@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 18:06:04 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 02:25:30 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 15:46:25 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ t_bool	change_env(t_command *cmd)
 		change_env_struct(*argv, lst);
 		flag = FALSE;
 	}
-	return (flag);
+	if (++argv && *argv)
+		return (flag);
+	return (FALSE);
 }
 
 static int	set_shift(char **argv)
@@ -65,12 +67,9 @@ static int	set_shift(char **argv)
 
 	rtn = 1;
 	i = 0;
-	while (argv[++i])
-	{
-		if (is_a_var_set(argv[i]))
-			rtn++;
-	}
-	if (argv)
+	while (argv[++i] && is_a_var_set(argv[i]))
+		rtn++;
+	if (argv[i])
 		return (rtn);
 	return (0);
 }
@@ -78,13 +77,22 @@ static int	set_shift(char **argv)
 int			ms_builtin_env(t_context *context, char **argv, int outfd)
 {
 	t_env	*current;
+	int		shift;
 
 	current = context->env;
-	if (argv[1] && (ft_strequ(argv[1], "-i") || ft_strequ(argv[1], "-"))
-		&& argv[2])
-		return (2);
+	if (argv[1] && (ft_strequ(argv[1], "-i") || ft_strequ(argv[1], "-")))
+	{
+		if (argv[2])
+			return (2);
+		else
+			return (ms_err_ret("Usage: env -i cmd", 0));
+	}
 	if (argv[1] && is_a_var_set(argv[1]))
-		return (set_shift(argv));
+	{
+		if (!(shift = set_shift(argv)))
+			return (ms_err_ret("Usage: env <name>=<value> cmd", 0));
+		return (shift);
+	}
 	while (current)
 	{
 		ft_putstr_fd(current->name, outfd);
