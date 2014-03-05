@@ -13,12 +13,10 @@
 #include "42sh.h"
 #include <term.h>
 
-int	ms_key_is_arrow_right(t_context *ctx, t_cmd_char **cmd_char)
+int	ms_key_is_arrow_right(t_context __UNUSED__ *ctx, t_cmd_char **cmd_char)
 {
-	t_cap		*cap;
 	t_cmd_char	*current;
 
-	cap = &(ctx->term->cap);
 	current = ms_get_cursor_position(cmd_char);
 	if (current->next)
 	{

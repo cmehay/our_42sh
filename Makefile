@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = 42sh
-CC = clang
+CC = gcc
 INCLUDES = -I ./includes/ -I ./libft/includes/
 CFLAGS = -g -Wall -Wextra -Werror $(INCLUDES)
 LDFLAGS = -L libft/ -lft -L /usr/lib -ltermcap

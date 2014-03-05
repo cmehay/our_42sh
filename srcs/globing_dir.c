@@ -26,9 +26,7 @@ static void		*destroy_glob(t_glob *lst)
 static t_glob	*new_match(char *file, char *pattern)
 {
 	t_glob	*item;
-	int		i;
 
-	i = -1;
 	if (!matching(pattern, file) || (*pattern != '.' && *file == '.'))
 		return (NULL);
 	item = (t_glob*)cool_malloc(sizeof(t_glob));

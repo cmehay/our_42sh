@@ -19,8 +19,8 @@
 int		ms_exec_processes_wait(t_context *context)
 {
 	t_jobs	*current;
-	int		status[1];
-	int		bg[1];
+	int		status;
+	int		bg;
 
 	current = context->jobs;
 	while (current)
@@ -29,7 +29,7 @@ int		ms_exec_processes_wait(t_context *context)
 		{
 			while (current->state == FORGROUND)
 			{
-				if (waitpid(current->pid, status, WNOHANG | WUNTRACED))
+				if (waitpid(current->pid, &status, WNOHANG | WUNTRACED))
 				{
 					if (WIFSTOPPED(status))
 						current->state = STOPPED;
@@ -41,7 +41,7 @@ int		ms_exec_processes_wait(t_context *context)
 		}
 		else if (current->state == BACKGROUND)
 		{
-			if (waitpid(current->pid, bg, WNOHANG | WUNTRACED))
+			if (waitpid(current->pid, &bg, WNOHANG | WUNTRACED))
 			{
 				if (WIFSTOPPED(bg))
 					current->state = STOPPED;
@@ -51,15 +51,15 @@ int		ms_exec_processes_wait(t_context *context)
 		}
 		else if (current->state == STOPPED)
 		{
-			if (waitpid(current->pid, bg, WNOHANG))
+			if (waitpid(current->pid, &bg, WNOHANG))
 			{
 				current->state = -1;
 			}
 		}
 		current = current->next;
 	}
-	status[0] = (status[0]) ? -1 : 0;
-	return (status[0]);
+	status = (status) ? -1 : 0;
+	return (status);
 }
 
 static int	ms_exec_semicol(t_context *context, t_node *node)
