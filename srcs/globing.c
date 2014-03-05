@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 20:47:26 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/03 01:23:13 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/05 16:01:44 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	find_pattern_dir(int depth, char *dir, char *pattern)
 			add_to_match(cpy, pattern, FALSE);
 		}
 	}
+	closedir(opdir);
 	cool_free(dir);
 }
 
