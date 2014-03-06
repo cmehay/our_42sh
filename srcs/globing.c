@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 20:47:26 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/05 16:01:44 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/06 11:17:30 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char		*globing_test(char *str)
 	rtn = str;
 	if (ft_strchr(str, '*') || ft_strchr(str, '?'))
 	{
-		rtn = ft_strtrim_cpy(globing(str));
+		rtn = globing(str);
 		if (rtn && !ft_strchr(rtn, ' '))
 		{
 			cool_free(rtn);

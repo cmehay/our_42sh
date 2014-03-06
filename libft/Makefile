@@ -6,13 +6,13 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 17:18:15 by sbethoua          #+#    #+#              #
-#    Updated: 2014/03/01 17:01:22 by cmehay           ###   ########.fr        #
+#    Updated: 2014/03/05 23:28:59 by cmehay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-CC = gcc
-CFLAGS = -O3 -Wall -Wextra -Werror -pipe -pedantic -I ./includes/
+CC = clang
+CFLAGS = -O3 -g -Wall -Wextra -Werror -pipe -pedantic -I ./includes/
 HEADERFILES = includes/libft.h
 SRCSDIR = ./srcs/
 SRCS = $(addprefix $(SRCSDIR), $(SRCSFILES))

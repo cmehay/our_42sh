@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:24:20 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 16:17:19 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/06 11:11:41 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	*ms_is_fg_comm(t_cmd_char **cmd_char)
 
 	nb_job = 1;
 	nb_c = 0;
-	fg = (int *) cool_malloc(sizeof(int) * ms_nb_exec(cmd_char));
+	fg = (int *) cool_malloc(sizeof(int) * (ms_nb_exec(cmd_char) + 1));
 	current = *cmd_char;
 	while (current && current->next)
 	{

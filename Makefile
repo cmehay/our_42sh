@@ -6,12 +6,12 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/03/05 01:49:19 by cmehay           ###   ########.fr        #
+#    Updated: 2014/03/05 23:27:23 by cmehay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 42sh
-CC = gcc
+CC = clang
 INCLUDES = -I ./includes/ -I ./libft/includes/
 CFLAGS = -g -Wall -Wextra -Werror $(INCLUDES)
 LDFLAGS = -L libft/ -lft -L /usr/lib -ltermcap

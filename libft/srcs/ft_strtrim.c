@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 18:07:55 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/03 00:31:19 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/06 11:20:36 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ char	*ft_strtrim(char const *s)
 	while (s[len] == ' ' || s[len] == '\n' || s[len] == '\t')
 		len--;
 	size = len - start;
-	if ((rtn = (char*) malloc(sizeof(char) * (size * (size > 0) + 1))) != NULL)
+	if ((rtn = (char*)ft_memalloc(sizeof(char) * (size * (size > 0) + 1))))
+	{
 		while (start < len + 1)
 			rtn[i++] = s[start++];
-	rtn[i] = 0;
+	}
 	return (rtn);
 }
 
@@ -55,11 +56,11 @@ char	*cool_strtrim(char const *s)
 	while (s[len] == ' ' || s[len] == '\n' || s[len] == '\t')
 		len--;
 	size = len - start;
-	if ((rtn = (char*)cool_malloc(sizeof(char) * (size * (size > 0) + 1)))
-		!= NULL)
+	if ((rtn = (char*)cool_malloc(sizeof(char) * (size * (size > 0) + 1))))
+	{
 		while (start < len + 1)
 			rtn[i++] = s[start++];
-	rtn[i] = 0;
+	}
 	return (rtn);
 }
 
