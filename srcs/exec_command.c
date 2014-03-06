@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 16:17:36 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/06 14:02:56 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static int		ms_command_exec_normal(t_context *context, t_command *cmd,
 			ms_jobs_lstadd(context, cmd->name, context->fg[context->num_fg - 1],
 			child);
 		else
-			ms_jobs_add_cmd(cmd->name, context);
+			ms_jobs_add_cmd(cmd->name, context, child);
 		return (ms_command_exec_parent(context, cmd, child));
 	}
 	return (0);

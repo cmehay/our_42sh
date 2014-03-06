@@ -6,7 +6,7 @@
 /*   By: dcouly <dcouly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/24 15:51:38 by dcouly            #+#    #+#             */
-/*   Updated: 2014/02/28 18:41:30 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/06 14:01:11 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ms_jobs_lstdel(t_context *context)
 	current = NULL;
 }
 
-void	ms_jobs_add_cmd(char *name, t_context *ctx)
+void	ms_jobs_add_cmd(char *name, t_context *ctx, int pid)
 {
 	t_jobs	*current;
 	char	*str;
@@ -86,6 +86,7 @@ void	ms_jobs_add_cmd(char *name, t_context *ctx)
 		current = current->next;
 	str = ft_strjoin(current->name, " | ");
 	free(current->name);
+	current->pid = pid;
 	current->name = ft_strjoin(str, name);
 	free(str);
 }

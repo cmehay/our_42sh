@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 13:59:43 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/06 14:01:35 by dcouly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -492,7 +492,7 @@ char		*glob_to_str(t_glob *lst);
 t_jobs		*ms_jobs_lstadd(t_context *context, char *var, int state, int pid);
 t_jobs		*ms_jobs_lstdelone(t_jobs **current);
 void		ms_jobs_lstdel(t_context *context);
-void		ms_jobs_add_cmd(char *name, t_context *ctx);
+void		ms_jobs_add_cmd(char *name, t_context *ctx, int pid);
 void		ms_modif_jobs(t_context *ctx);
 
 /*
