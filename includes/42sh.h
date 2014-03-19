@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:29:35 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/06 14:01:35 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/19 18:52:44 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -455,6 +455,12 @@ void		ms_command_exec_child(t_context *context, t_command *cmd,
 	int infd, int outfd);
 
 /*
+** exec_command_fork.c
+*/
+int			ms_command_exec_normal(t_context *context, t_command *cmd,
+	int infd, int outfd);
+
+/*
 ** exec_command_prepare.c
 */
 int			ms_exec_command_outfd_get(t_command *cmd);
@@ -560,7 +566,15 @@ int			ms_key_is_home(t_context *ctx, t_cmd_char **cmd_char);
 /*
 ** key_is_return.c
 */
+int			ms_nb_exec(t_cmd_char **cmd_char);
+int			ms_end_comm_part(t_cmd_char *curr);
+int			ms_is_background(char last, t_cmd_char *current);
 int			ms_key_is_return(t_context *ctx, char **cmd, t_cmd_char **cmd_char);
+
+/*
+** key_is_return_fg.c
+*/
+int			*ms_is_fg_comm(t_cmd_char **cmd_char);
 
 /*
 ** key_is_shift_arrow_down.c

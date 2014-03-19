@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/06 14:02:56 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/19 18:00:09 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <signal.h>
 
-int				ms_command_process_add(t_context *context, pid_t child)
+int	ms_command_process_add(t_context *context, pid_t child)
 {
 	t_process	*proc;
 	t_process	*curr;
@@ -37,63 +37,7 @@ int				ms_command_process_add(t_context *context, pid_t child)
 	return (0);
 }
 
-static int		ms_command_exec_parent(t_context *context, t_command *cmd, pid_t child)
-{
-	if (cmd->fdin.type == IO_READLINE)
-		close(cmd->fdin.pipe[PIPE_READ]);
-	return (ms_command_process_add(context, child));
-}
-
-static int		ms_command_exec_normal(t_context *context, t_command *cmd,
-		int infd, int outfd)
-{
-	char	*name;
-	pid_t	child;
-	pid_t	father;
-
-	father = getpid();
-	if (!cmd->argv[0])
-		return (-1);
-	name = ms_command_search(cmd->env_cpy, cmd->argv[0]);
-	if (!name)
-		return (-1);
-	cmd->name = name;
-	child = fork();
-	if (child < 0)
-	{
-		ms_err_display("fork failed.");
-		return (-1);
-	}
-	if (!child)
-	{
-		signal(SIGTTOU, SIG_DFL);
-		if (context->fg[context->num_fg] == -1)
-			setpgid(0, context->last_gid);
-		else
-			setpgid(0, 0);
-		kill(father, SIGUSR1);
-		pause();
-		ms_command_exec_child(context, cmd, infd, outfd);
-	}
-	else
-	{
-		signal(SIGTTOU, SIG_IGN);
-		pause();
-		kill(child, SIGUSR1);
-		context->last_gid = getpgid(child);
-		if (context->fg[context->num_fg++] == 0)
-			tcsetpgrp(STDIN_FILENO, getpgid(child));
-		if (context->fg[context->num_fg - 1] != -1)
-			ms_jobs_lstadd(context, cmd->name, context->fg[context->num_fg - 1],
-			child);
-		else
-			ms_jobs_add_cmd(cmd->name, context, child);
-		return (ms_command_exec_parent(context, cmd, child));
-	}
-	return (0);
-}
-
-int			ms_exec_command(t_context *context, t_node *node)
+int	ms_exec_command(t_context *context, t_node *node)
 {
 	t_command	*cmd;
 	int			outfd;

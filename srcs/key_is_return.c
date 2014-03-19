@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 16:24:20 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/06 11:11:41 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/19 18:50:46 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 
 
-static int	ms_nb_exec(t_cmd_char **cmd_char)
+int	ms_nb_exec(t_cmd_char **cmd_char)
 {
 	t_cmd_char	*current;
 	int			nb;
@@ -39,7 +39,7 @@ static int	ms_nb_exec(t_cmd_char **cmd_char)
 	return (nb);
 }
 
-static int	ms_end_comm_part(t_cmd_char *curr)
+int	ms_end_comm_part(t_cmd_char *curr)
 {
 	t_cmd_char	*current;
 
@@ -55,7 +55,7 @@ static int	ms_end_comm_part(t_cmd_char *curr)
 	return (0);
 }
 
-static int	ms_is_background(char last, t_cmd_char *current)
+int	ms_is_background(char last, t_cmd_char *current)
 {
 	if (last != '&')
 		return (0);
@@ -65,42 +65,7 @@ static int	ms_is_background(char last, t_cmd_char *current)
 	return (1);
 }
 
-static int	*ms_is_fg_comm(t_cmd_char **cmd_char)
-{
-	t_cmd_char	*current;
-	int			last;
-	int			*fg;
-	int			nb_c;
-	int			nb_job;
-
-	nb_job = 1;
-	nb_c = 0;
-	fg = (int *) cool_malloc(sizeof(int) * (ms_nb_exec(cmd_char) + 1));
-	current = *cmd_char;
-	while (current && current->next)
-	{
-		if (current->character == '|' && current->next
-				&& current->next->character != '|')
-			nb_job++;
-		if (ms_end_comm_part(current))
-		{
-			fg[nb_c++] = ms_is_background(last, current);
-			while (nb_job-- > 1)
-				fg[nb_c++] = -1;
-			nb_job = 1;
-		}
-		if (current->character != ' ' && current->character != '\t')
-			last = current->character;
-		current = current->next;
-	}
-	fg[nb_c++] = ms_is_background(last, current);
-	while (nb_job-- > 1)
-		fg[nb_c++] = -1;
-	return (fg);
-}
-
-int			ms_key_is_return(t_context *ctx,
-		char **cmd_line, t_cmd_char **cmd_char)
+int	ms_key_is_return(t_context *ctx, char **cmd_line, t_cmd_char **cmd_char)
 {
 	ms_exec_processes_wait(ctx);
 	ms_modif_jobs(ctx);

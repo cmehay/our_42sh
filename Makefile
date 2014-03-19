@@ -6,7 +6,7 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/03/05 23:27:23 by cmehay           ###   ########.fr        #
+#    Updated: 2014/03/19 18:49:22 by cmehay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCSFILES = 42sh.c \
 			key_is_ctrl_d.c \
 			key_is_backspace.c \
 			key_is_return.c \
+			key_is_return_fg.c \
 			term_display.c \
 			command_line_get.c \
 			command_exec.c \
@@ -64,8 +65,10 @@ SRCSFILES = 42sh.c \
 			ast_utils.c \
 			exec_command.c \
 			exec_command_child.c \
+			exec_command_fork.c \
 			exec_command_prepare.c \
 			exec_tree.c \
+			exec_proc.c \
 			exec_pipe.c \
 			command_parser.c \
 			command_print.c \

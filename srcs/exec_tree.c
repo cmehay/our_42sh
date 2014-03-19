@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 00:11:36 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/19 18:21:19 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,6 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-
-int		ms_exec_processes_wait(t_context *context)
-{
-	t_jobs	*current;
-	int		status;
-	int		bg;
-
-	current = context->jobs;
-	while (current)
-	{
-		if (current->state == FORGROUND)
-		{
-			while (current->state == FORGROUND)
-			{
-				if (waitpid(current->pid, &status, WNOHANG | WUNTRACED))
-				{
-					if (WIFSTOPPED(status))
-						current->state = STOPPED;
-					else
-						current->state = -1;
-				}
-			}
-			tcsetpgrp(STDIN_FILENO, context->gid);
-		}
-		else if (current->state == BACKGROUND)
-		{
-			if (waitpid(current->pid, &bg, WNOHANG | WUNTRACED))
-			{
-				if (WIFSTOPPED(bg))
-					current->state = STOPPED;
-				else
-					current->state = -1;
-			}
-		}
-		else if (current->state == STOPPED)
-		{
-			if (waitpid(current->pid, &bg, WNOHANG))
-			{
-				current->state = -1;
-			}
-		}
-		current = current->next;
-	}
-	status = (status) ? -1 : 0;
-	return (status);
-}
 
 static int	ms_exec_semicol(t_context *context, t_node *node)
 {

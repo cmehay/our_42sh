@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/03 18:59:00 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/04 20:42:58 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/06 18:19:33 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ static void	ms_capabilities_load(t_term *term)
 void		ms_term_mode_raw(t_term *term)
 {
 	struct termios	attr;
+	char			*env_term;
 
-	tgetent(NULL, getenv("TERM"));
+	if ((env_term = getenv("TERM")))
+		tgetent(NULL, env_term);
+	else
+		tgetent(NULL, "xterm");
 	tcgetattr(STDIN_FILENO, &attr);
 	attr.c_lflag &= ~(ECHO | ICANON);
 	attr.c_cc[VMIN] = 1;
