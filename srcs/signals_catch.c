@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/05 01:21:39 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/05 01:22:06 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:39:37 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void		ms_signal_catch(void)
 	signal(SIGCONT, SIG_IGN);
 	signal(SIGUSR1, ms_nothing);
 	signal(SIGQUIT, ms_signal_exit);
-	/*
 	signal(SIGSEGV, ms_signal_exit);
 	signal(SIGTERM, ms_signal_exit);
 	signal(SIGHUP, ms_signal_exit);
@@ -39,5 +38,4 @@ void		ms_signal_catch(void)
 	signal(SIGXFSZ, ms_signal_exit);
 	signal(SIGTRAP, ms_signal_exit);
 	signal(SIGABRT, ms_signal_exit);
-	*/
 }
