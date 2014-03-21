@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 10:10:23 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/10 18:02:39 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:23:34 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void		ft_itoa_cmp(int64_t n, char *str)
 	}
 }
 
-char		*ft_itoa(int64_t n)
+char			*ft_itoa(int64_t n)
 {
 	uint64_t	usgn_cp;
 	int64_t		nb_size;

@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 17:19:07 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 01:24:39 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:28:22 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_cmd_char			*ms_cmd_char_lstadd(t_cmd_char *cmd_char, char character)
 	return (cmd_char);
 }
 
-void			ms_cmd_char_lstdelone(t_cmd_char *current)
+void				ms_cmd_char_lstdelone(t_cmd_char *current)
 {
 	if (current)
 	{
@@ -64,7 +64,7 @@ void			ms_cmd_char_lstdelone(t_cmd_char *current)
 	}
 }
 
-void			ms_cmd_char_lstdel(t_cmd_char **cmd_char)
+void				ms_cmd_char_lstdel(t_cmd_char **cmd_char)
 {
 	t_cmd_char	*current;
 	t_cmd_char	*next;

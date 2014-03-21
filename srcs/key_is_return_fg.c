@@ -6,16 +6,17 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 18:28:46 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/19 18:53:47 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:28:01 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 #include "libft.h"
 
-static int	*ms_is_fg_comm_seg(t_cmd_char *current, int *fg, int nb_c, int nb_job)
+static int	*ms_is_fg_comm_seg(t_cmd_char *current, int *fg, int nb_c,
+	int nb_job)
 {
-	int last;
+	int	last;
 
 	while (current && current->next)
 	{

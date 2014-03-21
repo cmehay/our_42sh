@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 18:30:11 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/03 01:17:49 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:27:35 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_glob	*new_match(char *file, char *pattern)
 	return (item);
 }
 
-t_glob		*add_to_match(char *file, char *pattern, t_bool reset)
+t_glob			*add_to_match(char *file, char *pattern, t_bool reset)
 {
 	static t_glob	*lst = NULL;
 	t_glob			*tmp;
@@ -57,7 +57,7 @@ t_glob		*add_to_match(char *file, char *pattern, t_bool reset)
 	return (lst);
 }
 
-static void	copy_in_str(t_glob *lst, char *cpy)
+static void		copy_in_str(t_glob *lst, char *cpy)
 {
 	while (lst)
 	{
@@ -67,7 +67,7 @@ static void	copy_in_str(t_glob *lst, char *cpy)
 	}
 }
 
-char		*glob_to_str(t_glob *lst)
+char			*glob_to_str(t_glob *lst)
 {
 	char	*rtn;
 	size_t	len;

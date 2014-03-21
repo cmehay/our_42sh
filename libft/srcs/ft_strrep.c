@@ -6,13 +6,13 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 00:41:40 by cmehay            #+#    #+#             */
-/*   Updated: 2014/02/25 01:24:28 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:24:36 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*new_str(char *s1, int s2_len, char *str)
+static char		*new_str(char *s1, int s2_len, char *str)
 {
 	int		s1_len;
 	int		str_len;
@@ -31,7 +31,7 @@ static char	*new_str(char *s1, int s2_len, char *str)
 	return (ft_strnew(str_len + ((s2_len - s1_len) * i)));
 }
 
-static char	*cool_new_str(char *s1, int s2_len, char *str)
+static char		*cool_new_str(char *s1, int s2_len, char *str)
 {
 	int		s1_len;
 	int		str_len;

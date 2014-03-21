@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 00:35:51 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:25:05 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ static int		ms_ast_command_fill(t_node **node, t_lex *lexer)
 	return (0);
 }
 
-t_node			*ms_ast_build_command(t_lex *lexer, t_node *parent, t_direction dir)
+t_node			*ms_ast_build_command(t_lex *lexer, t_node *parent,
+	t_direction dir)
 {
 	t_node	*node;
 	int		ret;

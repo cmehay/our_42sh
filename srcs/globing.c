@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 20:47:26 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/06 11:17:30 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:27:13 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_bool		matching(char *pattern, char *lookup)
 	if (*pattern == '*' && *(pattern + 1) && !*lookup)
 		return (FALSE);
 	if (*pattern == '?' || *pattern == *lookup)
-		return matching(pattern + 1, lookup + 1);
+		return (matching(pattern + 1, lookup + 1));
 	if (*pattern == '*')
 		return (matching(pattern + 1, lookup) || matching(pattern, lookup + 1));
 	return (FALSE);

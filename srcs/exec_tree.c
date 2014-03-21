@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/19 18:21:19 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:26:07 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	ms_exec_or(t_context *context, t_node *node)
 	return (ret1);
 }
 
-int		ms_exec_tree(t_context *context, t_node *node)
+int			ms_exec_tree(t_context *context, t_node *node)
 {
 	int			ret;
 	t_command	*cmd;

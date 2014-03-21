@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/27 18:15:40 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:28:51 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_history			*ms_history_lstadd(t_history *history, t_cmd_char *cmd_char)
 	return (history);
 }
 
-void			ms_history_lstdel(t_history *history)
+void				ms_history_lstdel(t_history *history)
 {
 	t_history	*current;
 	t_history	*next;

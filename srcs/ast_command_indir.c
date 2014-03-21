@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 00:38:34 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/21 10:25:17 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static int		ms_ast_command_indir_out(t_command *cmd, t_lex *item)
 	return (0);
 }
 
-static int		ms_ast_command_indir_add(t_command *cmd, t_lex **lexer, t_lex *item)
+static int		ms_ast_command_indir_add(t_command *cmd, t_lex **lexer,
+	t_lex *item)
 {
 	int	ret;
 
