@@ -14,7 +14,7 @@
 
 int	ms_key_is_ctrl_y(t_context *ctx, t_cmd_char **cmd_char)
 {
-	(void) ctx;
-	(void) cmd_char;
+	(void)ctx;
+	(void)cmd_char;
 	return (0);
 }

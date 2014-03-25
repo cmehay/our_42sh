@@ -6,13 +6,13 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 13:47:11 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 21:21:06 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-static t_key_func_assoc	func_assoc[17] =
+static t_key_func_assoc	g_func_assoc[17] =
 {
 	{
 		KEY_IS_ARROW_UP,
@@ -89,10 +89,10 @@ int	ms_key_lookup(t_context *ctx, uint64_t key, t_cmd_char **cmd_char)
 	int		i;
 
 	i = 0;
-	while (func_assoc[i].key != 0)
+	while (g_func_assoc[i].key != 0)
 	{
-		if (func_assoc[i].key == key)
-			return (func_assoc[i].fptr(ctx, cmd_char));
+		if (g_func_assoc[i].key == key)
+			return (g_func_assoc[i].fptr(ctx, cmd_char));
 		i++;
 	}
 	return (1);

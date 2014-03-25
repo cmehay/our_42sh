@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 17:19:07 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/21 10:28:22 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 23:45:17 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static t_cmd_char	*ms_cmd_char_alloc(char character)
 {
 	t_cmd_char	*elem;
 
-	if ((elem = (t_cmd_char *) cool_malloc(sizeof(t_cmd_char))) == NULL)
-		return ((t_cmd_char *) ms_function_failed("cool_malloc failed", NULL));
+	if ((elem = (t_cmd_char*)cool_malloc(sizeof(t_cmd_char))) == NULL)
+		return ((t_cmd_char*)ms_function_failed("cool_malloc failed", NULL));
 	elem->character = character;
 	elem->cursor = FALSE;
 	elem->prev = NULL;

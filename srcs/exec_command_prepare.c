@@ -66,7 +66,7 @@ static int	ms_exec_command_io_pipe_get(t_cmdio *cmdio, t_pipedir d)
 {
 	int	*pfd;
 
-	pfd = (int *) cmdio->pipenode->data;
+	pfd = (int*)cmdio->pipenode->data;
 	return (pfd[d]);
 }
 

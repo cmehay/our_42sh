@@ -56,7 +56,7 @@ int		ms_lexer_handle_special(char **start, char **end,
 	}
 	(*ptr)++;
 	*end = *ptr;
-	(void) start;
+	(void)start;
 	return (0);
 }
 

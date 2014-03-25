@@ -21,7 +21,7 @@ char	*ft_strtrim(char const *s)
 	char	*rtn;
 
 	len = ft_strlen(s) - 1;
-	if ((int) len == -1)
+	if ((int)len == -1)
 		return (ft_strnew(1));
 	start = 0;
 	i = 0;
@@ -47,7 +47,7 @@ char	*cool_strtrim(char const *s)
 	char	*rtn;
 
 	len = ft_strlen(s) - 1;
-	if ((int) len == -1)
+	if ((int)len == -1)
 		return (cool_strnew(1));
 	start = 0;
 	i = 0;

@@ -27,7 +27,7 @@ int			ft_atoi(const char *str)
 	int		rtn;
 	int		neg;
 
-	shift = atoi_shift((char*) str);
+	shift = atoi_shift((char*)str);
 	i = 0;
 	mul = 1;
 	rtn = 0;

@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 18:06:04 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 15:46:25 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 22:23:59 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	change_env_struct(char *var, t_env *env)
 	}
 }
 
-t_bool	change_env(t_command *cmd)
+t_bool		change_env(t_command *cmd)
 {
 	char	**argv;
 	t_env	*env;

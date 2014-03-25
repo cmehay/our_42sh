@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 17:19:07 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 00:28:46 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 22:35:25 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_env	*ms_env_lstadd(t_context *context, char *var)
 	t_env	*elem;
 	t_env	*current;
 
-	if ((elem = (t_env *) cool_malloc(sizeof(t_env))) == NULL)
-		return ((t_env *) ms_function_failed("cool_malloc failed", NULL));
+	if ((elem = (t_env*)cool_malloc(sizeof(t_env))) == NULL)
+		return ((t_env*)ms_function_failed("cool_malloc failed", NULL));
 	elem->name = ms_var_name_get(var);
 	elem->value = ms_var_value_get(var);
 	if (elem->name == NULL || elem->value == NULL)

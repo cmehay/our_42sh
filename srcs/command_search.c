@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/01/20 17:37:25 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 15:28:39 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 22:31:41 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,11 @@ static char	**ms_paths_get(t_env *env, char *cmd)
 	{
 		paths = cool_strsplit(path->value, ':');
 		if (paths == NULL)
-			return ((char **) ms_function_failed("cool_malloc failed", NULL));
+			return ((char**)ms_function_failed("cool_malloc failed", NULL));
 		return (paths);
 	}
 	ms_command_not_found(cmd);
 	return (NULL);
-}
-
-int			ms_builtins_search_exec(t_context *context, t_command *cmd,
-	int outfd)
-{
-	if (ft_strcmp("cd", cmd->argv[0]) == 0)
-		return (ms_builtin_cd(context, cmd->argv, outfd));
-	if (ft_strcmp("bg", cmd->argv[0]) == 0)
-		return (ms_builtin_bg(context, cmd->argv, outfd));
-	if (ft_strcmp("fg", cmd->argv[0]) == 0)
-		return (ms_builtin_fg(context, cmd->argv, outfd));
-	if (ft_strcmp("stop", cmd->argv[0]) == 0)
-		return (ms_builtin_stop(context, cmd->argv, outfd));
-	if (ft_strcmp("history", cmd->argv[0]) == 0)
-		return (ms_builtin_history(context));
-	if (ft_strcmp("jobs", cmd->argv[0]) == 0)
-		return (ms_builtin_jobs(context, outfd));
-	if (ft_strcmp("echo", cmd->argv[0]) == 0)
-		return (ms_builtin_echo(context, cmd->argv, outfd));
-	if (ft_strcmp("setenv", cmd->argv[0]) == 0)
-		return (ms_builtin_setenv(context, cmd->argv, outfd));
-	if (ft_strcmp("unsetenv", cmd->argv[0]) == 0)
-		return (ms_builtin_unsetenv(context, cmd->argv, outfd));
-	return (ms_builtins_search_exec2(context, cmd, outfd));
 }
 
 int			ms_builtins_search_exec2(t_context *context, t_command *cmd,

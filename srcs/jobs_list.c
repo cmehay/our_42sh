@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcouly <dcouly@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/24 15:51:38 by dcouly            #+#    #+#             */
-/*   Updated: 2014/03/06 14:01:11 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/25 23:43:04 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_jobs	*ms_jobs_lstadd(t_context *context, char *var, int state, int pid)
 	t_jobs	*elem;
 	t_jobs	*current;
 
-	if ((elem = (t_jobs *) cool_malloc(sizeof(t_jobs))) == NULL)
-		return ((t_jobs *) ms_function_failed("cool_malloc failed", NULL));
+	if ((elem = (t_jobs*)cool_malloc(sizeof(t_jobs))) == NULL)
+		return ((t_jobs*)ms_function_failed("cool_malloc failed", NULL));
 	elem->name = ft_strdup(var);
 	elem->pid = pid;
 	elem->state = (state) ? (BACKGROUND) : (FORGROUND);

@@ -28,7 +28,7 @@ char	*ms_var_name_get(char *var)
 	if (i == 0)
 		name = cool_strsub(var, 0, 1);
 	if (name == NULL)
-		return ((char *) ms_function_failed("cool_malloc failed", NULL));
+		return ((char*)ms_function_failed("cool_malloc failed", NULL));
 	return (name);
 }
 
@@ -45,7 +45,7 @@ char	*ms_var_value_get(char *var)
 	i++;
 	value = cool_strsub(var, i, ft_strlen(var) - i);
 	if (value == NULL)
-		return ((char *) ms_function_failed("cool_malloc failed", NULL));
+		return ((char*)ms_function_failed("cool_malloc failed", NULL));
 	return (value);
 }
 

@@ -13,7 +13,7 @@
 #include "42sh.h"
 #include "libft.h"
 
-int	main(int __UNUSED__ argc, char __UNUSED__ **argv, char **environ)
+int	main(int __UNUSED__ argc, char __UNUSED__ **argv, char**environ)
 {
 	t_context	*context;
 

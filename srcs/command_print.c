@@ -40,7 +40,7 @@ void		ms_clean_line(t_cmd_char **cmd_char, int len, uint64_t nb)
 			break ;
 		current = current->next;
 	}
-	(void) nb;
+	(void)nb;
 	nb_c = nb_c + (current->next != 0);
 	nb_c = nb_c + len - 2;
 	tputs(tgetstr("cr", NULL), 0, ms_putchar);

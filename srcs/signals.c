@@ -95,5 +95,5 @@ void	ms_signal_stp(int __UNUSED__ sig)
 
 void	ms_nothing(int __UNUSED__ sig)
 {
-	(void) sig;
+	(void)sig;
 }

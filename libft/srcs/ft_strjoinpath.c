@@ -21,7 +21,7 @@ char	*ft_strjoinpath(char const *s1, char const *s2)
 
 	len1 = ft_strlen(s1);
 	len = len1 + ft_strlen(s2) + 1;
-	str = (char *) malloc(sizeof(char) * (len + 2));
+	str = (char*)malloc(sizeof(char) * (len + 2));
 	if (str == NULL)
 		return (NULL);
 	ft_strcpy(str, s1);

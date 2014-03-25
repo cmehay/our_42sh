@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   structs_libft.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 14:44:59 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/25 23:58:48 by cmehay           ###   ########.fr       */
+/*   Created: 2014/03/26 00:06:06 by cmehay            #+#    #+#             */
+/*   Updated: 2014/03/26 00:12:58 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-char	*ft_strchr(const char *s, int c)
+# include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
+# include <stdint.h>
+
+typedef struct	s_strlen
 {
-	size_t	i;
+	size_t	s1;
+	size_t	s2;
+}				t_strlen;
 
-	i = ft_strlen(s);
-	return (ft_memchr(s, (char)c, i + 1));
-}
+typedef struct	s_alloc_lst
+{
+	ssize_t				ptr;
+	struct s_alloc_lst	*next;
+}				t_alloc_lst;
+
+typedef struct	s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}				t_list;
+
+#endif

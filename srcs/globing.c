@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 20:47:26 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/21 10:27:13 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 23:40:42 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char		*globing(char *str)
 	char	*rtn;
 
 	cpy = cool_strdup(str);
-	split = cool_strsplit(sanityze(cpy = cool_strdup(str)), ' ');
+	split = cool_strsplit(sanityze(cpy), ' ');
 	array_cpy = split;
 	cool_free(cpy);
 	while (split && *split && *(++split))

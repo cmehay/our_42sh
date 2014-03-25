@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 20:20:23 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 22:44:02 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 22:25:04 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	*ms_var_join(char const *s1, char const *s2)
 
 	len1 = ft_strlen(s1);
 	len = len1 + ft_strlen(s2) + 1;
-	var = (char *) cool_malloc(sizeof(char) * (len + 2));
+	var = (char*)cool_malloc(sizeof(char) * (len + 2));
 	if (var == NULL)
 		return (NULL);
 	ft_strcpy(var, s1);
@@ -46,15 +46,15 @@ char		**ms_env_clone(t_env *env)
 		current = current->next;
 		i++;
 	}
-	if ((environ = (char **) cool_malloc(sizeof(char *) * (i + 1))) == NULL)
-		return ((char **) ms_function_failed("cool_malloc failed", NULL));
+	if ((environ = (char**)cool_malloc(sizeof(char*) * (i + 1))) == NULL)
+		return ((char**)ms_function_failed("cool_malloc failed", NULL));
 	i = 0;
 	current = env;
 	while (current)
 	{
 		environ[i] = ms_var_join(current->name, current->value);
 		if (environ[i] == NULL)
-			return ((char **) ms_function_failed("cool_malloc failed", NULL));
+			return ((char**)ms_function_failed("cool_malloc failed", NULL));
 		i++;
 		current = current->next;
 	}

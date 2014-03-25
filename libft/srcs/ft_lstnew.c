@@ -17,17 +17,17 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list	*elem;
 
-	elem = (t_list *) malloc(sizeof(t_list));
+	elem = (t_list*)malloc(sizeof(t_list));
 	if (elem == NULL)
 		return (NULL);
 	if (content == NULL)
 	{
-		elem->content = (void *) NULL;
+		elem->content = (void*)NULL;
 		elem->content_size = 0;
 	}
 	else
 	{
-		elem->content = (void *) malloc(content_size);
+		elem->content = (void*)malloc(content_size);
 		if (elem->content == NULL)
 		{
 			free(elem);

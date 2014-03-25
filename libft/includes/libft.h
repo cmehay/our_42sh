@@ -6,38 +6,16 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 16:01:31 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/03 00:27:47 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/26 00:13:06 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdint.h>
+# include "structs_libft.h"
 
 # define BUFF_SIZE 200
-
-typedef struct	s_strlen
-{
-	size_t	s1;
-	size_t	s2;
-}				t_strlen;
-
-typedef struct	s_alloc_lst
-{
-	ssize_t				ptr;
-	struct s_alloc_lst	*next;
-}				t_alloc_lst;
-
-typedef struct	s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}				t_list;
 
 void	*ft_memset(void *s, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -125,7 +103,6 @@ char	*ft_strrep(char *s1, char *s2, char *str);
 char	*ft_strmerge(char **array, int c);
 char	*ft_strtrim_cpy(char *s);
 
-
 /*
 ** mem_lst.c
 */
@@ -153,4 +130,4 @@ int		cool_next_line(int const fd, char **line);
 char	*cool_strrep(char *s1, char *s2, char *str);
 char	*cool_strmerge(char **array, int c);
 
-#endif /* !LIBFT_H */
+#endif

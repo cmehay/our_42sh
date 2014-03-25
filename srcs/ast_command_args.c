@@ -22,7 +22,7 @@ int	ms_ast_command_args(t_command *cmd, t_lex *lexer)
 
 	argv_size = ms_ast_lexer_count(lexer);
 	argv_size++;
-	argv = (char **) cool_malloc(argv_size * sizeof(char *));
+	argv = (char**)cool_malloc(argv_size * sizeof(char*));
 	if (!argv)
 		return (-1);
 	i = 0;

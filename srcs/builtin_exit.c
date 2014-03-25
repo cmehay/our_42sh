@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/22 20:39:10 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/28 18:02:57 by dcouly           ###   ########.fr       */
+/*   Updated: 2014/03/25 21:34:54 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int		ms_builtin_exit(t_context *context,
 {
 	ms_kill_all(context);
 	ms_context_clean(context);
-	exit (1);
+	exit (0);
 }

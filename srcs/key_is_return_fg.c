@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 18:28:46 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/21 10:28:01 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 21:25:04 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int			*ms_is_fg_comm(t_cmd_char **cmd_char)
 
 	nb_job = 1;
 	nb_c = 0;
-	fg = (int *) cool_malloc(sizeof(int) * (ms_nb_exec(cmd_char) + 1));
+	fg = (int*)cool_malloc(sizeof(int) * (ms_nb_exec(cmd_char) + 1));
 	current = *cmd_char;
 	return (ms_is_fg_comm_seg(current, fg, nb_c, nb_job));
 }

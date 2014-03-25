@@ -18,11 +18,11 @@ char	*ft_strstr(const char *s1, const char *s2)
 
 	s2_len = ft_strlen(s2);
 	if (s2_len == 0)
-		return ((char*) s1);
+		return ((char*)s1);
 	while (*s1 != 0)
 	{
 		if (ft_memcmp(s1, s2, s2_len) == 0)
-			return ((char*) s1);
+			return ((char*)s1);
 		s1++;
 	}
 	return (NULL);

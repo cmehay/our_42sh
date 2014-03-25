@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 17:49:08 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/21 10:28:51 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 23:46:24 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_history			*ms_history_lstadd(t_history *history, t_cmd_char *cmd_char)
 {
 	t_history	*elem;
 
-	if ((elem = (t_history *) cool_malloc(sizeof(t_history))) == NULL)
-		return ((t_history *) ms_function_failed("cool_malloc failed", NULL));
+	if ((elem = (t_history*)cool_malloc(sizeof(t_history))) == NULL)
+		return ((t_history*)ms_function_failed("cool_malloc failed", NULL));
 	elem->cmd_char = ms_copy_cmd_char(cmd_char);
 	elem->prev = NULL;
 	elem->next = NULL;

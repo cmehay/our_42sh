@@ -6,7 +6,7 @@
 #    By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/17 16:46:09 by sbethoua          #+#    #+#              #
-#    Updated: 2014/03/19 18:49:22 by cmehay           ###   ########.fr        #
+#    Updated: 2014/03/25 22:31:18 by cmehay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCSFILES = 42sh.c \
 			command_exec.c \
 			command_lexer.c \
 			command_search.c \
+			command_search_exec.c \
 			lexer_chars.c \
 			lexer_handlers.c \
 			lexer_list.c \

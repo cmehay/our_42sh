@@ -25,6 +25,6 @@ int	ms_key_is_backspace(t_context *ctx, t_cmd_char **cmd_char)
 		ms_cmd_char_lstdelone(current->prev);
 		tputs(tgetstr("dc", NULL), 0, ms_putchar);
 	}
-	(void) ctx;
+	(void)ctx;
 	return (0);
 }

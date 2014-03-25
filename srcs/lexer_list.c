@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 18:25:56 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/02/18 23:01:33 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 23:44:20 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_lex			*ms_lex_lstadd(t_lex **list, char *token, t_ttype type)
 	t_lex	*item;
 	t_lex	*last;
 
-	item = (t_lex *) cool_malloc(sizeof(t_lex));
+	item = (t_lex*)cool_malloc(sizeof(t_lex));
 	if (!item)
 	{
 		ms_err_display("cool_malloc failed.");

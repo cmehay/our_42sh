@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/21 10:25:05 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 22:21:42 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		ms_ast_command_clean(void *data)
 	t_command	*command;
 	int			i;
 
-	command = (t_command *) data;
+	command = (t_command*)data;
 	if (command->name)
 		cool_free(command->name);
 	if (command->argv)
@@ -51,7 +51,7 @@ static t_node	*ms_ast_command_alloc(t_node *parent, t_direction dir)
 
 	node = ms_ast_node_alloc(parent, dir, NODE_COMMAND);
 	{
-		cmd = (t_command *) cool_malloc(sizeof(t_command));
+		cmd = (t_command*)cool_malloc(sizeof(t_command));
 		if (!cmd)
 			ms_ast_node_clean(&node);
 		else
@@ -72,7 +72,7 @@ static int		ms_ast_command_fill(t_node **node, t_lex *lexer)
 	t_command	*cmd;
 	int			ret;
 
-	cmd = (t_command *) (*node)->data;
+	cmd = (t_command*)(*node)->data;
 	ms_ast_command_pipe(*node, cmd);
 	ret = ms_ast_command_indir(cmd, &lexer);
 	if (ret < 0)

@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 18:30:11 by cmehay            #+#    #+#             */
-/*   Updated: 2014/03/21 10:27:35 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 23:42:34 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,3 @@ char			*glob_to_str(t_glob *lst)
 	copy_in_str(bak, rtn);
 	return (rtn);
 }
-

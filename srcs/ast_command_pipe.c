@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 00:39:09 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 22:22:24 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,3 @@ void			ms_ast_command_pipe(t_node *node, t_command *cmd)
 		}
 	}
 }
-

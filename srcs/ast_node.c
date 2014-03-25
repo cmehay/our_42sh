@@ -6,7 +6,7 @@
 /*   By: cmehay <cmehay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/17 19:01:36 by sbethoua          #+#    #+#             */
-/*   Updated: 2014/03/05 00:09:09 by cmehay           ###   ########.fr       */
+/*   Updated: 2014/03/25 22:23:00 by cmehay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node	*ms_ast_node_alloc(t_node *parent, t_direction dir, t_nodetype type)
 {
 	t_node	*node;
 
-	node = (t_node *) cool_malloc(sizeof(t_node));
+	node = (t_node*)cool_malloc(sizeof(t_node));
 	if (node)
 	{
 		node->type = type;

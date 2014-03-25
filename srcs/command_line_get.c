@@ -48,7 +48,7 @@ char		*ms_convert_list_to_str(t_cmd_char *cmd_char)
 		current = current->next;
 	}
 	if ((cmd_line = cool_malloc(sizeof(char) * (count))) == NULL)
-		return ((char *) ms_function_failed("cool_malloc failed", NULL));
+		return ((char*)ms_function_failed("cool_malloc failed", NULL));
 	i = 0;
 	current = cmd_char;
 	while (i < count)
